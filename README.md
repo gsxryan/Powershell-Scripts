@@ -1,4 +1,4 @@
-# /Veriblock
+# Veriblock/
 
 - Veriblock PoolList
 Maintain a list of currently mined pools.
