@@ -1,3 +1,9 @@
+# Active Directory/
+
+-Get-ADUser
+Get users that contain a specific phyical office designation.
+```get-aduser -LDAPFilter "(physicaldeliveryofficename=CONTOSO/SITE/DIV/OFFICE)" | select GivenName, Surname, SamAccountName```
+
 # Veriblock/
 
 - Veriblock PoolList
