@@ -1,5 +1,9 @@
 # Files
 
+## InfoSec
+- LastActivityCheck.ps1
+Run a timer that resets when keyboard or mouse input is detected.  Hunt for stealthy mouse jigglers, or scroll lock spammers built in to conference kiosks.  Additionally, continuous logging could be built into this as a persistent service to detect if there is a consistent activty on a schedule.  Ex: mouse jiggles every 3m.
+
 - UserLoginUptime.ps1
 This script will run during the users login session.  It will continue to count time as soon as it starts.  This can be useful when testing or troubleshooting the session logoff policy delay.
 
@@ -13,7 +17,7 @@ Get users that contain a specific phyical office designation.
 
 -Get-ADComputer
 Get computers in AD that match a particular OU property
-(Get-ADComputer $hostname | where {$.DistingushedName -match "Accounting"}).DistinguishedName
+```(Get-ADComputer $hostname | where {$.DistingushedName -match "Accounting"}).DistinguishedName```
 
 # Veriblock/
 

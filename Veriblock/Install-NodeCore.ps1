@@ -1,6 +1,5 @@
 <#
 Veriblock Install Script
-Veriblock Telegram KernelPanick
 Managed on Github gist https://gist.github.com/gsxryan/20795e55d1e8ef079e42062656cc7eea
 Usage:
 powershell.exe -executionpolicy bypass "./Install-NodeCore.ps1"}

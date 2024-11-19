@@ -1,7 +1,6 @@
 <#
 Veriblock Update Script
 Bounty 4002.2
-Veriblock Telegram KernelPanick
 Managed on Github Gist source:
 https://gist.github.com/gsxryan/6da7fab06e038817a400cb09c0e6cdcf
 Usage:

@@ -1,6 +1,5 @@
 <#
 Veriblock Public Pools Pinger
-Veriblock Telegram KernelPanick
 Managed on Github Gist source:
 https://gist.github.com/gsxryan/13390725dcadf08b727dc3571743ae0a
 Purpose:
