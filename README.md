@@ -1,8 +1,19 @@
+# Files
+
+- UserLoginUptime.ps1
+This script will run during the users login session.  It will continue to count time as soon as it starts.  This can be useful when testing or troubleshooting the session logoff policy delay.
+
 # Active Directory/
+
+Some of the functions used in scripts have been broken down here in the readme to not get too specific about how you want to gather input or export results.
 
 -Get-ADUser
 Get users that contain a specific phyical office designation.
 ```get-aduser -LDAPFilter "(physicaldeliveryofficename=CONTOSO/SITE/DIV/OFFICE)" | select GivenName, Surname, SamAccountName```
+
+-Get-ADComputer
+Get computers in AD that match a particular OU property
+(Get-ADComputer $hostname | where {$.DistingushedName -match "Accounting"}).DistinguishedName
 
 # Veriblock/
 
