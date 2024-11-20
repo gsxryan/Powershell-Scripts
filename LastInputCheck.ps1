@@ -1,7 +1,5 @@
-<# RCautomate.com
- Modified to run until exited, 
- from source: 
-Andy Arismendi
+<# RCautomate.com 
+ Modified to run until exited, from source: Andy Arismendi
 https://stackoverflow.com/questions/15845508/get-idle-time-of-machine
 #>
 
@@ -45,5 +43,5 @@ Add-Type @'
 While ($true) {
     Write-Host ("Last input " + [PInvoke.Win32.UserInput]::LastInput)
     Write-Host ("Idle for " + [PInvoke.Win32.UserInput]::IdleTime)
-    Start-Sleep -Seconds (Get-Random -Minimum 1 -Maximum 5)
+    Start-Sleep -Seconds (Get-Random -Minimum 10 -Maximum 30)
 }
