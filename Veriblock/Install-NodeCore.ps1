@@ -9,10 +9,10 @@ Copies and installs latest Nodecore suite, and bootstrap blockchain
 Assumptions:
 -No NodeCore folder exists where you run the script from.
 -You cannot install at the root of a directory (Ex: C:\)
--Java is currently a manual installation due to it's many potential incompatibilites with other dependent software that may be on your machine.
+-Java is currently a manual installation due to it's many potential incompatibilities with other dependent software that may be on your machine.
 You are responsible for verifying compatibility with Java 1.8 x64.  We will direct you to the download page if needed.
 DISCLAIMER:
-While code has been tested in some envrionments, you are responsible for reviewing the code prior to execution and deciding yourself if it's acceptable to run.
+While code has been tested in some environments, you are responsible for reviewing the code prior to execution and deciding yourself if it's acceptable to run.
 IN NO EVENT SHALL VERIBLOCK OR SCRIPT DEV BE LIABLE TO ANY PARTY FOR DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES, INCLUDING LOST PROFITS, ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN IF VERIBLOCK OR DEVELOPER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 VERIBLOCK AND DEVELOPER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. THE SOFTWARE AND ACCOMPANYING DOCUMENTATION, PROVIDED HEREUNDER IS PROVIDED "AS IS". VERIBLOCK AND DEVELOPER HAS NO OBLIGATION TO PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #>
