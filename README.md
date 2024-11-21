@@ -13,7 +13,11 @@
 A technician keeps getting logged out of their remote session while installing an application that takes a very long time to complete (hours).  Application owners have not invested in developing a silent installer distributed by the enterprise.  Disconnect and Logout policies exist for inactivity that the technician cannot modify.  The installation process does not count as user activity.  Technician must attend to the machine manually, and remember to make some kind of activity on the remote session once every 14 mins while waiting.  This can often result in logged out sessions, requiring the installers to restart from the beginning.  This wastes time and negatively effects the teams KPIs.  Running this script on the remote machine allows the technician to ignore the machine during the install process, and is able to start on another customer simultaneously.  This greatly increases the effectiveness of their team.
 
  - **PsExec-SCCMRemoteInstall.ps1**
- I would recommend looking into Ansible for standardizing operations automation tasks like this. Specifically for SCCM, utilize the builtin tools unless they have already failed.  Although, you may have a use case needing to quickly resolve a software deployment project without as much oversight needed.  This is specific to installing SCCM Client on remote machines without having to RDP into each machine.  However, the batch files executed could be swapped out to remotely deploy with PsExec on any other silently installed applications.  The only dependencies assume you have PSEXEC.exe already downloaded to the current working directory, you are an administrator on the remote machines, and policy allows PSEXEC to run.  Modern threat agents may assume suspicious behavior from PSEXEC, so utilizing your enterprise standard remote deployment tools is recommended.
+ I would recommend looking into Ansible for standardizing operations automation tasks like this. Specifically for SCCM, utilize the builtin tools unless attempts have already failed.  You may have a use case needing to quickly resolve a software deployment project without as much oversight needed.  This is specific to installing SCCM Client on remote machines without having to RDP into each machine.  However, the batch files executed could be swapped out to remotely deploy with PsExec on any other silently installed applications.  The only dependencies assume you have PSEXEC.exe already downloaded to the current working directory, you are an administrator on the remote machines, and policy allows PSEXEC to run.  Modern threat agents may assume suspicious behavior from PSEXEC, so utilizing your enterprise standard remote deployment tools is recommended.
+
+ - **Misc**
+ Get Health of machines Registry.pol to detect for potential compliance health issues
+ ```(Get-Content -Encoding Byte -Path \\$hostname\c$\Windows\System32\GroupPolicy\Machine\Registry.pol -TotalCount 4)```
 
 ## InfoSec
 - **LastActivityCheck.ps1**
@@ -38,6 +42,14 @@ Get users that contain a specific physical office designation.
 -Get-ADComputer
 Get computers in AD that match a particular OU property.
 ```(Get-ADComputer $hostname | where {$.DistingushedName -match "Accounting"}).DistinguishedName```
+
+-Get-ADOrganizationalUnit
+Get computers in AD that match an exact OU path
+```$list = (Get-ADOrganizationalUnit -SearchBase "ou=exempt,ou=instruments,dc=rcautomate,dc=com" -Filter *).DistinguishedName```
+select only the objects that are enabled
+``` foreach ($pc in $list) {$advlist = += (get-adcomputer -Searchbase "$pc" -Properties -Name -Filter * | Where-Object {$_.Enabled -eq $true}).Name}```
+sort and dedupe
+``` $advlist | Sort-Object | Select-Object -Unique```
 
 # Crypto
 
