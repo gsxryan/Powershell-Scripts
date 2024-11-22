@@ -7,13 +7,19 @@
  Another alternative may be to package these applications into remote sandboxes such as Citrix or Azure Virtual Desktop.  Or, to package a portable JAR file with the Java Application deployment (See Java below for an example application for this method).  The intention of this script should only be to temporarily mitigate access while a better solution is developed.
 
 ## Windows Operations
-### For Windows Server Administrators, Tier 2 Help Desk, etc
+### For Windows Server Administrators, Tier 2 Help Desk, Root Cause Analysis etc
+
+ - **FlexLM.ps1**
+ This script assists with automating migration of the local client license configuration files for various licensing software.  It allows you to paste in a list of machines and will iterate through them to replace the licensing files.  It requires a fileshare to copy the new files from.  It also partially documents how to build a remote monitoring service to ensure that the health of the service is maintained.
 
  - **KeepAlive.ps1**
 A technician keeps getting logged out of their remote session while installing an application that takes a very long time to complete (hours).  Application owners have not invested in developing a silent installer distributed by the enterprise.  Disconnect and Logout policies exist for inactivity that the technician cannot modify.  The installation process does not count as user activity.  Technician must attend to the machine manually, and remember to make some kind of activity on the remote session once every 14 mins while waiting.  This can often result in logged out sessions, requiring the installers to restart from the beginning.  This wastes time and negatively effects the teams KPIs.  Running this script on the remote machine allows the technician to ignore the machine during the install process, and is able to start on another customer simultaneously.  This greatly increases the effectiveness of their team.
 
  - **PsExec-SCCMRemoteInstall.ps1**
  I would recommend looking into Ansible for standardizing operations automation tasks like this. Specifically for SCCM, utilize the builtin tools unless attempts have already failed.  You may have a use case needing to quickly resolve a software deployment project without as much oversight needed.  This is specific to installing SCCM Client on remote machines without having to RDP into each machine.  However, the batch files executed could be swapped out to remotely deploy with PsExec on any other silently installed applications.  The only dependencies assume you have PSEXEC.exe already downloaded to the current working directory, you are an administrator on the remote machines, and policy allows PSEXEC to run.  Modern threat agents may assume suspicious behavior from PSEXEC, so utilizing your enterprise standard remote deployment tools is recommended.
+
+- **RegistryPOLfix.ps1**
+Suspecting that registry.pol file corruption causes the following issues.  This script makes an attempt to gather data from suspected endpoints and identify trends.  It will also remediate so the problem should not persist.  This was an issue documented on many forums effecting Windows 10.  I'm not sure if this persisted with Windows 11 as my role transitioned away from this type of activity.  -Bitlocker will not properly install MBAM & Encrypt (FVE registry key error), -Slow boot times (GPO apply times extended), -certs not being received (Domain trust is lost), -improve long term SCCM client health (Patch compliance may suffer). Alternative CMPivot Query:    ```File('C:\Windows\System32\GroupPolicy\Machine\Registry.pol') | project Device, FileName, Size, LastWriteTime```
 
  - **Misc**
  Get Health of machines Registry.pol to detect for potential compliance health issues
