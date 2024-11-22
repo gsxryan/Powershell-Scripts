@@ -7,10 +7,13 @@
  Another alternative may be to package these applications into remote sandboxes such as Citrix or Azure Virtual Desktop.  Or, to package a portable JAR file with the Java Application deployment (See Java below for an example application for this method).  The intention of this script should only be to temporarily mitigate access while a better solution is developed.
 
 ## Windows Operations
-### For Windows Server Administrators, Tier 2 Help Desk, Root Cause Analysis etc
+### For Windows Server/Desktop Administrators, Tier 2 Help desk, Root Cause Analysis, etc
 
  - **FlexLM.ps1**
  This script assists with automating migration of the local client license configuration files for various licensing software.  It allows you to paste in a list of machines and will iterate through them to replace the licensing files.  It requires a fileshare to copy the new files from.  It also partially documents how to build a remote monitoring service to ensure that the health of the service is maintained.
+
+ - **InstalledAppCondition.ps1**
+ When executing, it will detect if the client has an application installed, and take an action if it is not.  This can become useful if your enterprise has decided it will not automatically deploy a specific piece of software, and the users must manually install it themselves.  In this example, it detects Citrix Workstation, and if it's not installed, will instruct and take the user to the SCCM Software Center to be installed by self service.  Once the dependency is installed, the application will launch internet explorer, and take the user to the Citrix Storefront page.  This automates some of the user instruction, easing some burden on the help desk.  
 
  - **KeepAlive.ps1**
 A technician keeps getting logged out of their remote session while installing an application that takes a very long time to complete (hours).  Application owners have not invested in developing a silent installer distributed by the enterprise.  Disconnect and Logout policies exist for inactivity that the technician cannot modify.  The installation process does not count as user activity.  Technician must attend to the machine manually, and remember to make some kind of activity on the remote session once every 14 mins while waiting.  This can often result in logged out sessions, requiring the installers to restart from the beginning.  This wastes time and negatively effects the teams KPIs.  Running this script on the remote machine allows the technician to ignore the machine during the install process, and is able to start on another customer simultaneously.  This greatly increases the effectiveness of their team.
@@ -56,6 +59,11 @@ select only the objects that are enabled
 ``` foreach ($pc in $list) {$advlist = += (get-adcomputer -Searchbase "$pc" -Properties -Name -Filter * | Where-Object {$_.Enabled -eq $true}).Name}```
 sort and dedupe
 ``` $advlist | Sort-Object | Select-Object -Unique```
+
+# Powershell Generic Functions
+## Intake Data from csv that contains a header
+```$computers = Import-Csv C:\Users\RCurtis\Documents\icd.csv -Header HN
+foreach ($item in $computers.Hostname){}```
 
 # Crypto
 
