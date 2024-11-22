@@ -6,6 +6,9 @@
  This script ensures the website is in each machine's local Java Exception sites. PLEASE avoid using this method if at all possible.  It can open your company up to MITM attacks with malicious code injection.  If your developers are unable to sign their Java code, or the vendor cannot sign their code then this CI can be deployed to the Desktops that require access to the Java site.  
  Another alternative may be to package these applications into remote sandboxes such as Citrix or Azure Virtual Desktop.  Or, to package a portable JAR file with the Java Application deployment (See Java below for an example application for this method).  The intention of this script should only be to temporarily mitigate access while a better solution is developed.
 
+ - **SCCM-PullWinPEImagingLogs**
+ Useful if your environment utilizes WinPE environment for Imaging Desktops.  This captures logfiles from both the pre-and post-imaging states to ensure you get full coverage when troubleshooting issues with imaging completion.  You can then utilize grep or Select-String in powershell to find keywords or error messages related to your issue.
+ 
 ## Windows Operations
 ### For Windows Server/Desktop Administrators, Tier 2 Help desk, Root Cause Analysis, etc
 
