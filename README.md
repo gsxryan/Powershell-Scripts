@@ -30,7 +30,7 @@ Runs during the users logged in session.  It will continue to count time as soon
 Ex: the session may disconnect, but leave the user logged in.  After re-establishing the connection, you can detect the time the session was idle, disconnected without having been logged out.
 https://www.stigviewer.com/stig/windows_server_2012_2012_r2_member_server/2015-06-26/finding/V-3458
 
-# Active Directory/
+# Active Directory
 
 Some of the functions used in scripts have been broken down here in the readme to not get too specific about how you want to gather input or export results.
 This can be useful when generating phased test rings in a staged software deployment strategy.
