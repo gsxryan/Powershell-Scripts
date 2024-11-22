@@ -8,7 +8,10 @@
 
  - **SCCM-PullWinPEImagingLogs**
  Useful if your environment utilizes WinPE environment for Imaging Desktops.  This captures logfiles from both the pre-and post-imaging states to ensure you get full coverage when troubleshooting issues with imaging completion.  You can then utilize grep or Select-String in powershell to find keywords or error messages related to your issue.
- 
+
+ - **RCAScanner-DLP38Citrix**
+ Template to scan application versions on all machines to identify RCA.  This could be modified for other applications you suspect may conflict with each other to identify trends between Healthy and Unhealthy machines.  In this case users were reporting issues with attached USB Devices.  This will scan all attached USB devices and look for a specific error state (Code 38).  We suspected a conflict between Citrix and McAfee after taking a look at Installed Applications versions manually.  We needed to extend this to all machines that could have USB issues before they became a problem for the help desk.  The root cause from this script was detected to be an error between a specific version of Citrix Receiver, and McAfee DLP on a specific Hardware model.  In the short term, the Citrix Version was updated on those models before the Help Desk was consumed with service calls.  In the long term, both clients were updated.
+
 ## Windows Operations
 ### For Windows Server/Desktop Administrators, Tier 2 Help desk, Root Cause Analysis, etc
 
