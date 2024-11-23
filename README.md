@@ -6,6 +6,9 @@
  This script ensures the website is in each machine's local Java Exception sites. PLEASE avoid using this method if at all possible.  It can open your company up to MITM attacks with malicious code injection.  If your developers are unable to sign their Java code, or the vendor cannot sign their code then this CI can be deployed to the Desktops that require access to the Java site.  The intention of this script should only be to temporarily allow access while a better solution is developed.
  Another alternative may be to package these applications into remote sandboxes such as Citrix or Azure Virtual Desktop.  Or, to package a portable JAR file with the Java Application deployment (See Java below for an example application for this method).
 
+ - **ServicesStopDisableReport.ps1**
+ Stop a Service, Disable the Service, and then report to confirm it's status.  In this example, the printer spooler is used.
+
  - **SCCM-PullWinPEImagingLogs**
  Useful if your environment utilizes WinPE environment for Imaging Desktops.  This captures logfiles from both the pre-and post-imaging states to ensure you get full coverage when troubleshooting issues with imaging completion.  You can then utilize grep or Select-String in powershell to find keywords or error messages related to your issue.
 
@@ -14,7 +17,7 @@
 
 - **Misc**
 Sigmaplot Licensing Path: C:\ProgramData\SafeNet Sentinel\Sentinel LDK
-Setting Outlook prescense indicator to teams(alternatives Lync, Cisco Jabber, Zoom): ```new-itemproperty -path "HKCU:SOFTWARE\IM Providers" -name "DefaultIMApp" -propertytype String -value "Teams" -force```
+Setting Outlook presence indicator to teams(alternatives Lync, Cisco Jabber, Zoom): ```new-itemproperty -path "HKCU:SOFTWARE\IM Providers" -name "DefaultIMApp" -propertytype String -value "Teams" -force```
 
 ## Windows Operations
 ### For Windows Server/Desktop Administrators, Tier 2 Help desk, Root Cause Analysis, etc
