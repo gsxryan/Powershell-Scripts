@@ -3,8 +3,8 @@
 ## SCCM / MECM Misc Scripts
  - **CI-JavaExceptionSites.ps1**
  The following STIG may be applied to your enterprise, preventing your users from adding Java site exceptions to their local java clients to run unsigned Java code.  https://www.stigviewer.com/stig/java_runtime_environment_jre_version_7_windows_7/2015-12-10/finding/V-32828
- This script ensures the website is in each machine's local Java Exception sites. PLEASE avoid using this method if at all possible.  It can open your company up to MITM attacks with malicious code injection.  If your developers are unable to sign their Java code, or the vendor cannot sign their code then this CI can be deployed to the Desktops that require access to the Java site.  
- Another alternative may be to package these applications into remote sandboxes such as Citrix or Azure Virtual Desktop.  Or, to package a portable JAR file with the Java Application deployment (See Java below for an example application for this method).  The intention of this script should only be to temporarily mitigate access while a better solution is developed.
+ This script ensures the website is in each machine's local Java Exception sites. PLEASE avoid using this method if at all possible.  It can open your company up to MITM attacks with malicious code injection.  If your developers are unable to sign their Java code, or the vendor cannot sign their code then this CI can be deployed to the Desktops that require access to the Java site.  The intention of this script should only be to temporarily allow access while a better solution is developed.
+ Another alternative may be to package these applications into remote sandboxes such as Citrix or Azure Virtual Desktop.  Or, to package a portable JAR file with the Java Application deployment (See Java below for an example application for this method).
 
  - **SCCM-PullWinPEImagingLogs**
  Useful if your environment utilizes WinPE environment for Imaging Desktops.  This captures logfiles from both the pre-and post-imaging states to ensure you get full coverage when troubleshooting issues with imaging completion.  You can then utilize grep or Select-String in powershell to find keywords or error messages related to your issue.
@@ -66,10 +66,14 @@ select only the objects that are enabled
 sort and dedupe
 ``` $advlist | Sort-Object | Select-Object -Unique```
 
+ - **Compare-UserFolder-ADHomepath.ps1**
+ Uses: Compliance: Ensure user directories are correctly provisioned and de-provisioned according to AD.
+Cleanup: Identify and potentially delete orphaned directories to save storage.
+Troubleshooting: Detect misconfigured or missing homedirectory entries in AD for users who might be experiencing access issues.
+
 # Powershell Generic Functions
 ## Intake Data from csv that contains a header
-```$computers = Import-Csv C:\Users\RCurtis\Documents\icd.csv -Header HN
-foreach ($item in $computers.Hostname){}```
+```$computers = Import-Csv C:\Users\RCurtis\Documents\icd.csv -Header HN; foreach ($item in $computers.Hostname){}```
 
 # Crypto
 
