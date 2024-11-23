@@ -37,6 +37,12 @@ Detect if a specified program is x64 installed.  Prioritize that path.  But, if 
  Get Health of machines Registry.pol to detect for potential compliance health issues
  ```(Get-Content -Encoding Byte -Path \\$hostname\c$\Windows\System32\GroupPolicy\Machine\Registry.pol -TotalCount 4)```
 
+ robocopy commands to sync folders
+ ```robocopy "$Source\$user" "$dest\$user" /E /Z /W:2 /R:30 /fft /MT:10 /LOG+:D:\RoboCopy.log```
+ Audit
+ ```robocopy "$Source\$user" "$dest\$user"  /e /l /ns /njs /njh /ndl /fp /LOG+:D:\RoboCopyAudit.log```
+ 
+
 ## InfoSec
 - **LastActivityCheck.ps1**
 Run a timer that resets when keyboard or mouse input is detected.  Hunt for stealthy mouse jigglers, or scroll lock spammers built in to conference kiosks.  Additionally, continuous logging could be built into this as a persistent service to detect if there is a consistent activity on a schedule.  
