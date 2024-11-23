@@ -30,6 +30,9 @@ A technician keeps getting logged out of their remote session while installing a
 - **RegistryPOLfix.ps1**
 Suspecting that registry.pol file corruption causes the following issues.  This script makes an attempt to gather data from suspected endpoints and identify trends.  It will also remediate so the problem should not persist.  This was an issue documented on many forums effecting Windows 10.  I'm not sure if this persisted with Windows 11 as my role transitioned away from this type of activity.  -Bitlocker will not properly install MBAM & Encrypt (FVE registry key error), -Slow boot times (GPO apply times extended), -certs not being received (Domain trust is lost), -improve long term SCCM client health (Patch compliance may suffer). Alternative CMPivot Query:    ```File('C:\Windows\System32\GroupPolicy\Machine\Registry.pol') | project Device, FileName, Size, LastWriteTime```
 
+- **x64x86pathfailover.ps1**
+Detect if a specified program is x64 installed.  Prioritize that path.  But, if it does not exist, failover to the x86 path.  The example uses chrome browser.
+
  - **Misc**
  Get Health of machines Registry.pol to detect for potential compliance health issues
  ```(Get-Content -Encoding Byte -Path \\$hostname\c$\Windows\System32\GroupPolicy\Machine\Registry.pol -TotalCount 4)```
