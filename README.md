@@ -8,7 +8,7 @@
 
  - **MappedNetDriveScraper.ps1**
  This script will run in the user context to dump all mapped network drives.  This can be useful when planning a user profile migration or determining which file servers are still in use.  A DEV item was left to use NT*.dat file to utilize an admin account to search all machine profiles mapped drives, but the project I worked on did not need to utilize this extent yet.
- 
+
  - **OneDriveAvailableOffline.ps1**
 Some users wish to have their onedrive file available offline always.  They may travel often, or commonly not have access to the internet.  You may have a group you wish to force these settings to, so the users will not need to encounter the issue of being in a spot without their files downloaded.  This script was drafted and partially tested.  Additional functionality will need to be added to have a successful deployment of this.
 
@@ -111,6 +111,14 @@ Troubleshooting: Detect misconfigured or missing homedirectory entries in AD for
 # Powershell Generic Functions
 ## Intake Data from csv that contains a header
 ```$computers = Import-Csv C:\Users\RCurtis\Documents\icd.csv -Header HN; foreach ($item in $computers.Hostname){}```
+
+## Use PSEXEC with a batch list of machines, execute powershell code remotely
+This script will grab the local machine certs to check validity.  Can be useful when troubleshooting NAC 802.1x, or CAC/PIV authentication issues.
+```PsExec.exe -s -c -f @PCs.txt powershell "Get-ChildItem Cert:\LocalMachine\My -Recurse | Select Subject, NotAfter"```
+
+## Pipe output to an external logfile
+Must have write access to fileshare or path
+``` | Out-File -FilePath \\fileserver01\Telemetry\output.log -Append```
 
 # Crypto
 
