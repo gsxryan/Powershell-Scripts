@@ -6,9 +6,6 @@
  This script ensures the website is in each machine's local Java Exception sites. PLEASE avoid using this method if at all possible.  It can open your company up to MITM attacks with malicious code injection.  If your developers are unable to sign their Java code, or the vendor cannot sign their code then this CI can be deployed to the Desktops that require access to the Java site.  The intention of this script should only be to temporarily allow access while a better solution is developed.
  Another alternative may be to package these applications into remote sandboxes such as Citrix or Azure Virtual Desktop.  Or, to package a portable JAR file with the Java Application deployment (See Java below for an example application for this method).
 
- - **ServicesStopDisableReport.ps1**
- Stop a Service, Disable the Service, and then report to confirm it's status.  In this example, the printer spooler is used.
-
  - **SCCM-PullWinPEImagingLogs**
  Useful if your environment utilizes WinPE environment for Imaging Desktops.  This captures logfiles from both the pre-and post-imaging states to ensure you get full coverage when troubleshooting issues with imaging completion.  You can then utilize grep or Select-String in powershell to find keywords or error messages related to your issue.
 
@@ -37,6 +34,10 @@ A technician keeps getting logged out of their remote session while installing a
 - **RegistryPOLfix.ps1**
 Suspecting that registry.pol file corruption causes the following issues.  This script makes an attempt to gather data from suspected endpoints and identify trends.  It will also remediate so the problem should not persist.  This was an issue documented on many forums effecting Windows 10.  I'm not sure if this persisted with Windows 11 as my role transitioned away from this type of activity.  -Bitlocker will not properly install MBAM & Encrypt (FVE registry key error), -Slow boot times (GPO apply times extended), -certs not being received (Domain trust is lost), -improve long term SCCM client health (Patch compliance may suffer). Alternative CMPivot Query:    ```File('C:\Windows\System32\GroupPolicy\Machine\Registry.pol') | project Device, FileName, Size, LastWriteTime```
 
+- **ScheduledTask.ps1**
+This is ideal for running administrative tasks or maintenance scripts that need to be executed immediately without manual intervention. For example, applying configuration changes, collecting logs, or running diagnostics.  The task can be remotely scheduled, and executed at a time specified.  In this example a 60 second timer is initiated for immediate deployment.  It is particularly useful for one-time or ad hoc tasks that do not need a permanent presence in Task Scheduler. This approach minimizes long-term overhead and avoids clutter.
+After execution, the script removes the scheduled task, maintaining a clean and secure system state. This is particularly valuable in scenarios where automation scripts are used for troubleshooting or quick fixes, and there’s no need to retain the scheduled task after execution.
+
 - **x64x86pathfailover.ps1**
 Detect if a specified program is x64 installed.  Prioritize that path.  But, if it does not exist, failover to the x86 path.  The example uses chrome browser.
 
@@ -55,6 +56,10 @@ Detect if a specified program is x64 installed.  Prioritize that path.  But, if 
 Run a timer that resets when keyboard or mouse input is detected.  Hunt for stealthy mouse jigglers, or scroll lock spammers built in to conference kiosks.  Additionally, continuous logging could be built into this as a persistent service to detect if there is a consistent activity on a schedule.  
 Ex: the mouse jiggles every 3m.  You will be able to see history of device activity every 3m.
 https://www.stigviewer.com/stig/microsoft_windows_11/2022-06-24/finding/V-253297
+
+- **ServicesStopDisableReport.ps1**
+ Stop a Service, Disable the Service, and then report to confirm it's status.  In this example, the printer spooler is used.
+https://www.cisa.gov/news-events/alerts/2021/06/30/printnightmare-critical-windows-print-spooler-vulnerability
 
 - **UserLoginUptime.ps1**
 Runs during the users logged in session.  It will continue to count time as soon as it starts.  This can be useful when testing or troubleshooting the session logoff policy delay in remote sessions.  
