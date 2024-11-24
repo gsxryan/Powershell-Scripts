@@ -6,6 +6,9 @@
  This script ensures the website is in each machine's local Java Exception sites. PLEASE avoid using this method if at all possible.  It can open your company up to MITM attacks with malicious code injection.  If your developers are unable to sign their Java code, or the vendor cannot sign their code then this CI can be deployed to the Desktops that require access to the Java site.  The intention of this script should only be to temporarily allow access while a better solution is developed.
  Another alternative may be to package these applications into remote sandboxes such as Citrix or Azure Virtual Desktop.  Or, to package a portable JAR file with the Java Application deployment (See Java below for an example application for this method).
 
+ - **OneDriveAvailableOffline.ps1**
+Some users wish to have their onedrive file available offline always.  They may travel often, or commonly not have access to the internet.  You may have a group you wish to force these settings to, so the users will not need to encounter the issue of being in a spot without their files downloaded.  This script was drafted and partially tested.  Additional functionality will need to be added to have a successful deployment of this.
+
  - **SCCM-PullWinPEImagingLogs**
  Useful if your environment utilizes WinPE environment for Imaging Desktops.  This captures logfiles from both the pre-and post-imaging states to ensure you get full coverage when troubleshooting issues with imaging completion.  You can then utilize grep or Select-String in powershell to find keywords or error messages related to your issue.
 
@@ -84,6 +87,10 @@ Get users that contain a specific physical office designation.
 -Get-ADComputer
 Get computers in AD that match a particular OU property.
 ```(Get-ADComputer $hostname | where {$.DistingushedName -match "Accounting"}).DistinguishedName```
+
+-Get-ADGroupMember 
+Get users that are a member of a specific AD Group:
+```(Get-ADGroupMember -Identity "Contoso CustSupport").name```
 
 -Get-ADOrganizationalUnit
 Get computers in AD that match an exact OU path
