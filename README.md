@@ -38,6 +38,9 @@ Suspecting that registry.pol file corruption causes the following issues.  This 
 This is ideal for running administrative tasks or maintenance scripts that need to be executed immediately without manual intervention. For example, applying configuration changes, collecting logs, or running diagnostics.  The task can be remotely scheduled, and executed at a time specified.  In this example a 60 second timer is initiated for immediate deployment.  It is particularly useful for one-time or ad hoc tasks that do not need a permanent presence in Task Scheduler. This approach minimizes long-term overhead and avoids clutter.
 After execution, the script removes the scheduled task, maintaining a clean and secure system state. This is particularly valuable in scenarios where automation scripts are used for troubleshooting or quick fixes, and there’s no need to retain the scheduled task after execution.
 
+- **UserStandardizeShortcut.ps1**
+This will cleanup user generated, or other non-standard managed shortcuts from every users desktop on each machine.  It will also remove any shortcuts set to generate on new users first login.  After cleanup it will upload the enterprise managed shortcut to the Public profile, so each user on the machine will have a managed standard shortcut.  This can help eliminate confusion in the help desk by standardizing managed application access.
+
 - **x64x86pathfailover.ps1**
 Detect if a specified program is x64 installed.  Prioritize that path.  But, if it does not exist, failover to the x86 path.  The example uses chrome browser.
 
