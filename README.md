@@ -6,6 +6,9 @@
  This script ensures the website is in each machine's local Java Exception sites. PLEASE avoid using this method if at all possible.  It can open your company up to MITM attacks with malicious code injection.  If your developers are unable to sign their Java code, or the vendor cannot sign their code then this CI can be deployed to the Desktops that require access to the Java site.  The intention of this script should only be to temporarily allow access while a better solution is developed.
  Another alternative may be to package these applications into remote sandboxes such as Citrix or Azure Virtual Desktop.  Or, to package a portable JAR file with the Java Application deployment (See Java below for an example application for this method).
 
+ - **MappedNetDriveScraper.ps1**
+ This script will run in the user context to dump all mapped network drives.  This can be useful when planning a user profile migration or determining which file servers are still in use.  A DEV item was left to use NT*.dat file to utilize an admin account to search all machine profiles mapped drives, but the project I worked on did not need to utilize this extent yet.
+ 
  - **OneDriveAvailableOffline.ps1**
 Some users wish to have their onedrive file available offline always.  They may travel often, or commonly not have access to the internet.  You may have a group you wish to force these settings to, so the users will not need to encounter the issue of being in a spot without their files downloaded.  This script was drafted and partially tested.  Additional functionality will need to be added to have a successful deployment of this.
 
