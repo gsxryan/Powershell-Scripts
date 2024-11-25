@@ -39,7 +39,7 @@ After a technician images a users PC and have arrived to collect the laptop, the
 
  - **ModifyShortcutPath.ps1**
  Instead of replacing shortcuts, modify only the paths.  This can be useful when attempting to maintain the ico and extended attributes without re-creating them from scratch.  If the shortcuts were created manually, and you have numerous ones to manage, this can be utilized.
- 
+
  - **PsExec-SCCMRemoteInstall.ps1**
  I would recommend looking into Ansible for standardizing operations automation tasks like this. Specifically for SCCM, utilize the builtin tools unless attempts have already failed.  You may have a use case needing to quickly resolve a software deployment project without as much oversight needed.  This is specific to installing SCCM Client on remote machines without having to RDP into each machine.  However, the batch files executed could be swapped out to remotely deploy with PsExec on any other silently installed applications.  The only dependencies assume you have PSEXEC.exe already downloaded to the current working directory, you are an administrator on the remote machines, and policy allows PSEXEC to run.  Modern threat agents may assume suspicious behavior from PSEXEC, so utilizing your enterprise standard remote deployment tools is recommended.
 
@@ -86,7 +86,11 @@ https://www.stigviewer.com/stig/windows_server_2012_2012_r2_member_server/2015-0
 
 # Active Directory
 
-Some of the functions used in scripts have been broken down here in the readme to not get too specific about how you want to gather input or export results.
+- **ADLockedAccountMon.ps1**
+Script gathers the Active Directory lock state and reads out the status on 15 second intervals.  This can be useful for troubleshooting a continuously locking account.  You can determine the length of time between lock frequency, and compare it to lockout policies to determine how often a foreign script may be forcefully locking the account.
+
+- **MISC**
+Some of the functions used in prior scripts have been broken down here in the readme to not get too specific about how you want to gather input or export results.
 This can be useful when generating phased test rings in a staged software deployment strategy.
 
 -Get-ADUser
