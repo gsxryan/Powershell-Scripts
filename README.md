@@ -37,6 +37,9 @@ A technician keeps getting logged out of their remote session while installing a
 - **McAfeeFDEAcctMon.ps1**
 After a technician images a users PC and have arrived to collect the laptop, the tech will provision the users FDE login password.  This script will ensure that the users account has been provisioned, and can assist with first account login before departing the imaging lab.  This is applicable to companies that utilize McAfee FDE with bootup password required, and wish to optimize the PC delivery process.
 
+ - **ModifyShortcutPath.ps1**
+ Instead of replacing shortcuts, modify only the paths.  This can be useful when attempting to maintain the ico and extended attributes without re-creating them from scratch.  If the shortcuts were created manually, and you have numerous ones to manage, this can be utilized.
+ 
  - **PsExec-SCCMRemoteInstall.ps1**
  I would recommend looking into Ansible for standardizing operations automation tasks like this. Specifically for SCCM, utilize the builtin tools unless attempts have already failed.  You may have a use case needing to quickly resolve a software deployment project without as much oversight needed.  This is specific to installing SCCM Client on remote machines without having to RDP into each machine.  However, the batch files executed could be swapped out to remotely deploy with PsExec on any other silently installed applications.  The only dependencies assume you have PSEXEC.exe already downloaded to the current working directory, you are an administrator on the remote machines, and policy allows PSEXEC to run.  Modern threat agents may assume suspicious behavior from PSEXEC, so utilizing your enterprise standard remote deployment tools is recommended.
 
