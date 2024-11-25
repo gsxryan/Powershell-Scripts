@@ -34,6 +34,9 @@ Setting Outlook presence indicator to teams(alternatives Lync, Cisco Jabber, Zoo
  - **KeepAlive.ps1**
 A technician keeps getting logged out of their remote session while installing an application that takes a very long time to complete (hours).  Application owners have not invested in developing a silent installer distributed by the enterprise.  Disconnect and Logout policies exist for inactivity that the technician cannot modify.  The installation process does not count as user activity.  Technician must attend to the machine manually, and remember to make some kind of activity on the remote session once every 14 mins while waiting.  This can often result in logged out sessions, requiring the installers to restart from the beginning.  This wastes time and negatively effects the teams KPIs.  Running this script on the remote machine allows the technician to ignore the machine during the install process, and is able to start on another customer simultaneously.  This greatly increases the effectiveness of their team.
 
+- **McAfeeFDEAcctMon.ps1**
+After a technician images a users PC and have arrived to collect the laptop, the tech will provision the users FDE login password.  This script will ensure that the users account has been provisioned, and can assist with first account login before departing the imaging lab.  This is applicable to companies that utilize McAfee FDE with bootup password required, and wish to optimize the PC delivery process.
+
  - **PsExec-SCCMRemoteInstall.ps1**
  I would recommend looking into Ansible for standardizing operations automation tasks like this. Specifically for SCCM, utilize the builtin tools unless attempts have already failed.  You may have a use case needing to quickly resolve a software deployment project without as much oversight needed.  This is specific to installing SCCM Client on remote machines without having to RDP into each machine.  However, the batch files executed could be swapped out to remotely deploy with PsExec on any other silently installed applications.  The only dependencies assume you have PSEXEC.exe already downloaded to the current working directory, you are an administrator on the remote machines, and policy allows PSEXEC to run.  Modern threat agents may assume suspicious behavior from PSEXEC, so utilizing your enterprise standard remote deployment tools is recommended.
 
@@ -108,15 +111,16 @@ sort and dedupe
 Cleanup: Identify and potentially delete orphaned directories to save storage.
 Troubleshooting: Detect misconfigured or missing homedirectory entries in AD for users who might be experiencing access issues.
 
-# Powershell Generic Functions
-## Intake Data from csv that contains a header
+# Powershell
+
+**Intake Data from csv that contains a header**
 ```$computers = Import-Csv C:\Users\RCurtis\Documents\icd.csv -Header HN; foreach ($item in $computers.Hostname){}```
 
-## Use PSEXEC with a batch list of machines, execute powershell code remotely
+**Use PSEXEC with a batch list of machines, execute powershell code remotely**
 This script will grab the local machine certs to check validity.  Can be useful when troubleshooting NAC 802.1x, or CAC/PIV authentication issues.
 ```PsExec.exe -s -c -f @PCs.txt powershell "Get-ChildItem Cert:\LocalMachine\My -Recurse | Select Subject, NotAfter"```
 
-## Pipe output to an external logfile
+**Pipe output to an external logfile**
 Must have write access to fileshare or path
 ``` | Out-File -FilePath \\fileserver01\Telemetry\output.log -Append```
 
