@@ -25,6 +25,9 @@ Setting Outlook presence indicator to teams(alternatives Lync, Cisco Jabber, Zoo
 ## Windows Operations
 ### For Windows Server/Desktop Administrators, Tier 2 Help desk, Root Cause Analysis, etc
 
+ - **ExtractICOfromEXE.ps1**
+ Extracts an ico image file from an EXE.  This can be useful if building your own custom shortcuts for user delivery.
+
  - **FlexLM.ps1**
  This script assists with automating migration of the local client license configuration files for various licensing software.  It allows you to paste in a list of machines and will iterate through them to replace the licensing files.  It requires a fileshare to copy the new files from.  It also partially documents how to build a remote monitoring service to ensure that the health of the service is maintained.
 
@@ -124,7 +127,7 @@ Troubleshooting: Detect misconfigured or missing homedirectory entries in AD for
 # Powershell
 
 **IDPrimaryUserFromList.ps1**
-This will identify the primary user on a list of machines you input.  This can be useful if you've been unable to identify a primary machine user by other means, or the primary user is suspected to be incorrect.  Also can be useful when attempting to track down machines for property management.
+This will identify the primary user remotely on a list of machines you input.  This can be useful if you've been unable to identify a primary machine user by other means, or the primary user is suspected to be incorrect.  Also can be useful when attempting to track down machines for property management.
 ```(Get-WmiObject -Class win32_process -ComputerName $Hostname -ErrorAction SilentlyContinue | Where-Object name -Match explorer -ErrorAction SilentlyContinue).getowner().user```
 
 **Intake Data from csv that contains a header**
