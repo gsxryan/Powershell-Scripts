@@ -34,6 +34,9 @@ Compare the Certificates between two machines.  This can be useful to determine 
  - **FlexLM.ps1**
  This script assists with automating migration of the local client license configuration files for various licensing software.  It allows you to paste in a list of machines and will iterate through them to replace the licensing files.  It requires a fileshare to copy the new files from.  It also partially documents how to build a remote monitoring service to ensure that the health of the service is maintained.
 
+ - **FolderFullPermissions.ps1**
+ One that should be used as a last resort for application useability.  Policy should be modified instead, but this can be a temporary workaround, or used in troubleshooting the source for application permission issues.  In this example VSCode is tested to allow automatic updates.
+
  - **InstalledAppCondition.ps1**
  When executing, it will detect if the client has an application installed, and take an action if it is not.  This can become useful if your enterprise has decided it will not automatically deploy a specific piece of software, and the users must manually install it themselves.  In this example, it detects Citrix Workstation, and if it's not installed, will instruct and take the user to the SCCM Software Center to be installed by self service.  Once the dependency is installed, the application will launch internet explorer, and take the user to the Citrix Storefront page.  This automates some of the user instruction, easing some burden on the help desk.  
 
