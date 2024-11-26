@@ -25,6 +25,9 @@ Setting Outlook presence indicator to teams(alternatives Lync, Cisco Jabber, Zoo
 ## Windows Operations
 ### For Windows Server/Desktop Administrators, Tier 2 Help desk, Root Cause Analysis, etc
 
+ - **CompareCertificates.ps1**
+Compare the Certificates between two machines.  This can be useful to determine certificate or authentication behavioral differences between PCs.
+
  - **ExtractICOfromEXE.ps1**
  Extracts an ico image file from an EXE.  This can be useful if building your own custom shortcuts for user delivery.
 
