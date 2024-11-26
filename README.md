@@ -49,6 +49,9 @@ After a technician images a users PC and have arrived to collect the laptop, the
  - **PsExec-SCCMRemoteInstall.ps1**
  I would recommend looking into Ansible for standardizing operations automation tasks like this. Specifically for SCCM, utilize the builtin tools unless attempts have already failed.  You may have a use case needing to quickly resolve a software deployment project without as much oversight needed.  This is specific to installing SCCM Client on remote machines without having to RDP into each machine.  However, the batch files executed could be swapped out to remotely deploy with PsExec on any other silently installed applications.  The only dependencies assume you have PSEXEC.exe already downloaded to the current working directory, you are an administrator on the remote machines, and policy allows PSEXEC to run.  Modern threat agents may assume suspicious behavior from PSEXEC, so utilizing your enterprise standard remote deployment tools is recommended.
 
+- **RDPlockup-DisableUDP.ps1**
+In some environments anyone utilizing Remote Desktop may encounter screen locking, no response from input.  Disabling UDP on RDP can make the session connections more reliable in these environments.  This script sets a registry path to accomplish this.
+
 - **RecentlyInstalledSoftware.ps1**
 Can be used to determine the latest changes on a PC (installed software, or updates).  This is useful when performing RCA, determining what might have caused recent issues on machines reporting common issues.
 
