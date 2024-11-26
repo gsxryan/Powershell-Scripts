@@ -123,6 +123,10 @@ Troubleshooting: Detect misconfigured or missing homedirectory entries in AD for
 
 # Powershell
 
+**IDPrimaryUserFromList.ps1**
+This will identify the primary user on a list of machines you input.  This can be useful if you've been unable to identify a primary machine user by other means, or the primary user is suspected to be incorrect.  Also can be useful when attempting to track down machines for property management.
+```(Get-WmiObject -Class win32_process -ComputerName $Hostname -ErrorAction SilentlyContinue | Where-Object name -Match explorer -ErrorAction SilentlyContinue).getowner().user```
+
 **Intake Data from csv that contains a header**
 ```$computers = Import-Csv C:\Users\RCurtis\Documents\icd.csv -Header HN; foreach ($item in $computers.Hostname){}```
 
