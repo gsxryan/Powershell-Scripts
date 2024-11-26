@@ -152,6 +152,9 @@ Must have write access to fileshare or path
 
 # Batch
 
+**InstallTemplate.bat**
+An example bat file installer using generic language.  The license installer example uses Lasergene DNAstar
+
 **Prerequisite Redistributable**
 ```"%~dp0vcredist2012_x64.exe"```
 

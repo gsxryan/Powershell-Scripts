@@ -10,6 +10,30 @@ Optimally, schedule after monthly maintenance before customers return.
 Appendix:
 
 orglab: Origin Labs
+use_server.lic contents:
+----
+SERVER LICServer01.contoso.com ANY
+USE_SERVER
+----
+
+Sigmaplot hasp_107466.ini contents:
+----
+broadcastsearch=0
+[REMOTE]
+SERVERADDR=LICServer01.contoso.com
+----
+Sigmaplot ems.ini contents
+----
+[EMS_URL]
+CONNECT = 14.143.34.182
+CONNECT_ALTERNATE = 49.206.228.153
+UPDATE_LOC = systat.us
+CHECKUPDATES = FALSE
+IGNORE_PATCH_ERROR = FALSE
+TIMEOUT = 60
+LICTYPE=NETWORK
+KEYINFO=
+----
 adskflex: Autodesk / RevIt suite
 
 Healthy state text:
