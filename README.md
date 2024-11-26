@@ -150,6 +150,20 @@ This script will grab the local machine certs to check validity.  Can be useful 
 Must have write access to fileshare or path
 ``` | Out-File -FilePath \\fileserver01\Telemetry\output.log -Append```
 
+# Batch
+
+**Prerequisite Redistributable**
+```"%~dp0vcredist2012_x64.exe"```
+
+**Silent EXE installer switch**
+```"\\fileshare01\installers\App76\App76_setup_x64.exe" /s --ini="\\fileshare01\installers\App76\setup.xml" --logdir="C:\Program Files\Contoso\Logs"```
+
+**Alternate logfile method**
+```%~dp0setup.exe /v "/lv C:\Progra~1\Contoso\Logs\App315.log /qb CUSTOM_PROPERTY=True"```
+
+**Silent MSI installer switch**
+```msiexec.exe /i "%~dp0setup.msi" /qb /l*v "C:\Program Files\Contoso\Logs\App315.log" REBOOT=ReallySuppress```
+
 # Crypto
 
 ## Burstcoin (dead)
