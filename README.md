@@ -1,7 +1,7 @@
 # Files
 
 ## SCCM / MECM Misc Scripts
- - **CI-JavaExceptionSites.ps1**
+ - **JavaExceptionSitesCI.ps1**
  The following STIG may be applied to your enterprise, preventing your users from adding Java site exceptions to their local java clients to run unsigned Java code.  https://www.stigviewer.com/stig/java_runtime_environment_jre_version_7_windows_7/2015-12-10/finding/V-32828
  This script ensures the website is in each machine's local Java Exception sites. PLEASE avoid using this method if at all possible.  It can open your company up to MITM attacks with malicious code injection.  If your developers are unable to sign their Java code, or the vendor cannot sign their code then this CI can be deployed to the Desktops that require access to the Java site.  The intention of this script should only be to temporarily allow access while a better solution is developed.
  Another alternative may be to package these applications into remote sandboxes such as Citrix or Azure Virtual Desktop.  Or, to package a portable JAR file with the Java Application deployment (See Java below for an example application for this method).
@@ -30,6 +30,9 @@ Setting Outlook presence indicator to teams(alternatives Lync, Cisco Jabber, Zoo
 
  - **InstalledAppCondition.ps1**
  When executing, it will detect if the client has an application installed, and take an action if it is not.  This can become useful if your enterprise has decided it will not automatically deploy a specific piece of software, and the users must manually install it themselves.  In this example, it detects Citrix Workstation, and if it's not installed, will instruct and take the user to the SCCM Software Center to be installed by self service.  Once the dependency is installed, the application will launch internet explorer, and take the user to the Citrix Storefront page.  This automates some of the user instruction, easing some burden on the help desk.  
+
+ - **JavaExceptionSitesUser.ps1**
+ This script will assume the logged on user had an issue with Java site launching.  Policy is restricting unsigned code being run.  See "Java" above for disclaimer.  It utilizes User permissions, so a shortcut to the script can be deployed to users that can run it with self-service, or a technician can easily instruct them to run it without remote access.  This will detect if the exception.sites file has been defined to the user profile path yet.  If not, it will copy it from the specified file share.  The specified file share is assumed to be hosting a list of sites to be excepted for Java Checks.  The exception.sites file is a centralized, managed file with only user read access.  Users/Everyone should never be granted access to modify the remote file.
 
  - **KeepAlive.ps1**
 A technician keeps getting logged out of their remote session while installing an application that takes a very long time to complete (hours).  Application owners have not invested in developing a silent installer distributed by the enterprise.  Disconnect and Logout policies exist for inactivity that the technician cannot modify.  The installation process does not count as user activity.  Technician must attend to the machine manually, and remember to make some kind of activity on the remote session once every 14 mins while waiting.  This can often result in logged out sessions, requiring the installers to restart from the beginning.  This wastes time and negatively effects the teams KPIs.  Running this script on the remote machine allows the technician to ignore the machine during the install process, and is able to start on another customer simultaneously.  This greatly increases the effectiveness of their team.
@@ -87,7 +90,7 @@ https://www.stigviewer.com/stig/windows_server_2012_2012_r2_member_server/2015-0
 # Active Directory
 
 - **ADLockedAccountMon.ps1**
-Script gathers the Active Directory lock state and reads out the status on 15 second intervals.  This can be useful for troubleshooting a continuously locking account.  You can determine the length of time between lock frequency, and compare it to lockout policies to determine how often a foreign script may be forcefully locking the account.
+Script gathers the Active Directory lock state of an account and reads out the status on 15 second intervals.  This can be useful for troubleshooting a continuously locking account.  You can determine the length of time between lock frequency, and compare it to lockout policies to determine how often a foreign script may be forcefully locking the account.
 
 - **MISC**
 Some of the functions used in prior scripts have been broken down here in the readme to not get too specific about how you want to gather input or export results.
