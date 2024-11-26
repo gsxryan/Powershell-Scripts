@@ -1,7 +1,7 @@
 # Files
 
 ## SCCM / MECM Misc Scripts
- - **JavaExceptionSitesCI.ps1**
+ - **JavaExceptions JavaExceptionSitesCI.ps1**
  The following STIG may be applied to your enterprise, preventing your users from adding Java site exceptions to their local java clients to run unsigned Java code.  https://www.stigviewer.com/stig/java_runtime_environment_jre_version_7_windows_7/2015-12-10/finding/V-32828
  This script ensures the website is in each machine's local Java Exception sites. PLEASE avoid using this method if at all possible.  It can open your company up to MITM attacks with malicious code injection.  If your developers are unable to sign their Java code, or the vendor cannot sign their code then this CI can be deployed to the Desktops that require access to the Java site.  The intention of this script should only be to temporarily allow access while a better solution is developed.
  Another alternative may be to package these applications into remote sandboxes such as Citrix or Azure Virtual Desktop.  Or, to package a portable JAR file with the Java Application deployment (See Java below for an example application for this method).
@@ -40,7 +40,7 @@ Compare the Certificates between two machines.  This can be useful to determine 
  - **InstalledAppCondition.ps1**
  When executing, it will detect if the client has an application installed, and take an action if it is not.  This can become useful if your enterprise has decided it will not automatically deploy a specific piece of software, and the users must manually install it themselves.  In this example, it detects Citrix Workstation, and if it's not installed, will instruct and take the user to the SCCM Software Center to be installed by self service.  Once the dependency is installed, the application will launch internet explorer, and take the user to the Citrix Storefront page.  This automates some of the user instruction, easing some burden on the help desk.  
 
- - **JavaExceptionSitesUser.ps1**
+ - **JavaExceptions JavaExceptionSitesUser.ps1**
  This script will assume the logged on user had an issue with Java site launching.  Policy is restricting unsigned code being run.  See "Java" above for disclaimer.  It utilizes User permissions, so a shortcut to the script can be deployed to users that can run it with self-service, or a technician can easily instruct them to run it without remote access.  This will detect if the exception.sites file has been defined to the user profile path yet.  If not, it will copy it from the specified file share.  The specified file share is assumed to be hosting a list of sites to be excepted for Java Checks.  The exception.sites file is a centralized, managed file with only user read access.  Users/Everyone should never be granted access to modify the remote file.
 
  - **KeepAlive.ps1**
