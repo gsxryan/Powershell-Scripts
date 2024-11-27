@@ -153,6 +153,12 @@ This script will grab the local machine certs to check validity.  Can be useful 
 Must have write access to fileshare or path
 ``` | Out-File -FilePath \\fileserver01\Telemetry\output.log -Append```
 
+**Get Hostnames by IP address method**
+A .NET class that performs a reverse DNS lookup
+```$hostname = [System.Net.Dns]::GetHostByAddress($IP.IP).Hostname```
+Omit the .NET class dependency and use builtin cmdlet
+```Resolve-DnsName -Name $IP -Reverse```
+
 # Batch
 
 **InstallTemplate.bat**
