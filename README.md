@@ -83,6 +83,9 @@ Detect if a specified program is x64 installed.  Prioritize that path.  But, if 
  Audit
  ```robocopy "$Source\$user" "$dest\$user"  /e /l /ns /njs /njh /ndl /fp /LOG+:D:\RoboCopyAudit.log```
 
+### For End User continuous improvements
+- **SearchALLExcel-resultTXT.ps1**
+This allows users to search using a keyword on all XLS and XLSX files in a subdirectory.  It will export to CSV, do a search on the CSV Flat files to find, then export data to text file and display the information in notepad.
 
 ## InfoSec
 - **LastActivityCheck.ps1**
