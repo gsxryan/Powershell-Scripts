@@ -162,6 +162,9 @@ A .NET class that performs a reverse DNS lookup
 Omit the .NET class dependency and use builtin cmdlet
 ```Resolve-DnsName -Name $IP -Reverse```
 
+**Get the OS build number**
+```(Get-WmiObject Win32_OperatingSystem).BuildNumber```
+
 # Batch
 
 **InstallTemplate.bat**
