@@ -15,6 +15,9 @@ Some users wish to have their onedrive file available offline always.  They may 
  - **SCCM-PullWinPEImagingLogs**
  Useful if your environment utilizes WinPE environment for Imaging Desktops.  This captures logfiles from both the pre-and post-imaging states to ensure you get full coverage when troubleshooting issues with imaging completion.  You can then utilize grep or Select-String in powershell to find keywords or error messages related to your issue.
 
+- **Sigmaplot\SigmaplotALLusersLicense.ps1**
+This vendor requires T2 to install a license manually on ALL user profiles on each machine.  Applicable to Sigmaplot 14.5 and below.  Not confirmed on 15+.  This is quite burdensome for T2, so this script was created to mitigate hundreds of service request tickets to manually install the license.  This Installs license to all existing users that have accounts on a single machine.  Additionally, ensures each new user that logs in gets the current license registration.  Utilizes ActiveSync registry to install the license on new user logins so they will also have access to Sigmaplot.  Without these mitigations T2 support will need to reinstall the sigmaplot license and enter custom information for each unique user where Sigmaplot is installed.
+
  - **RCAScanner-DLP38Citrix**
  Template to scan application versions on all machines to identify RCA.  This could be modified for other applications you suspect may conflict with each other to identify trends between Healthy and Unhealthy machines.  In this case users were reporting issues with attached USB Devices.  This will scan all attached USB devices and look for a specific error state (Code 38).  We suspected a conflict between Citrix and McAfee after taking a look at Installed Applications versions manually.  We needed to extend this to all machines that could have USB issues before they became a problem for the help desk.  The root cause from this script was detected to be an error between a specific version of Citrix Receiver, and McAfee DLP on a specific Hardware model.  In the short term, the Citrix Version was updated on those models before the Help Desk was consumed with service calls.  In the long term, both clients were updated.
 
@@ -181,6 +184,9 @@ An example bat file installer using generic language.  The license installer exa
 
 **Silent MSI installer switch**
 ```msiexec.exe /i "%~dp0setup.msi" /qb /l*v "C:\Program Files\Contoso\Logs\App315.log" REBOOT=ReallySuppress```
+
+**Powershell script start**
+```SET PSPath=%~dp0CopyLicense.ps1; Powershell -NoProfile -ExecutionPolicy Bypass -Command "& '%PSPath%'";```
 
 # Crypto
 
