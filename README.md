@@ -88,6 +88,9 @@ Detect if a specified program is x64 installed.  Prioritize that path.  But, if 
 This allows users to search using a keyword on all XLS and XLSX files in a subdirectory.  It will export to CSV, do a search on the CSV Flat files to find, then export data to text file and display the information in notepad.
 
 ## InfoSec
+- **ChromeForceAutoupdate.ps1**
+This is an attempt to elevate compliance for chrome installs that are out of date.  As the user, force open chrome, give it time to use autoupdate policy to regain compliance. Recenter chrome as active window, and close it
+
 - **LastActivityCheck.ps1**
 Run a timer that resets when keyboard or mouse input is detected.  Hunt for stealthy mouse jigglers, or scroll lock spammers built in to conference kiosks.  Additionally, continuous logging could be built into this as a persistent service to detect if there is a consistent activity on a schedule.  
 Ex: the mouse jiggles every 3m.  You will be able to see history of device activity every 3m.
