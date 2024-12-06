@@ -155,6 +155,13 @@ This will identify the primary user remotely on a list of machines you input.  T
 This script will grab the local machine certs to check validity.  Can be useful when troubleshooting NAC 802.1x, or CAC/PIV authentication issues.
 ```PsExec.exe -s -c -f @PCs.txt powershell "Get-ChildItem Cert:\LocalMachine\My -Recurse | Select Subject, NotAfter"```
 
+**PSEXEC with CAC, PIV, or yubikey SmartCard**
+```runas /smartcard "psexec \\hostname powershell.exe -windowstyle hidden -execution policy bypass -file \\contoso.com\script.ps1 & pause"```
+
+**Download multiple JAR in pack200 format**
+This downloaded IPA JAR files for portable application launching for non-admin accounts.  This link is no longer kept current, but JARS can be retrieved from desktop installer.
+```('ipa', 'appThird1', 'appThird2', 'commonThird') | foreach { (Invoke-WebRequest -Uri "https://analysis.ingenuity.com/pa/public/$_.jar" -Outfile "C:\Temp\IPA\$_.jar" -ErrorAction stop -Headers @{'Accept-Encoding' = 'pack200-gzip'; 'Content-Type' = 'application/x-java-archive'})}```
+
 **Pipe output to an external logfile**
 Must have write access to fileshare or path
 ``` | Out-File -FilePath \\fileserver01\Telemetry\output.log -Append```
@@ -167,6 +174,9 @@ Omit the .NET class dependency and use builtin cmdlet
 
 **Get the OS build number**
 ```(Get-WmiObject Win32_OperatingSystem).BuildNumber```
+
+**Workaround: .ssh folder may become inaccessible**
+```cd C:\Users\User.Name; takeown /F ".ssh" /d Y /r;``` Delete the folder, then ask user to login
 
 # Batch
 

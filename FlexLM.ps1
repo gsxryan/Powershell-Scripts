@@ -9,7 +9,7 @@ Use a windows scheduled task to run as desired.
 Optimally, schedule after monthly maintenance before customers return.
 Appendix:
 
-orglab: Origin Labs - OLicense.lic required from vendor.
+orglab: Origin Labs 2018 and lower - OLicense.lic required from vendor.
 use_server.lic contents:
 ----
 SERVER LICServer01.contoso.com ANY
