@@ -10,9 +10,12 @@
 
 ## SCCM / MECM Misc Scripts
  - **JavaExceptions JavaExceptionSitesCI.ps1**
- The following STIG may be applied to your enterprise, preventing your users from adding Java site exceptions to their local java clients to run unsigned Java code.  https://www.stigviewer.com/stig/java_runtime_environment_jre_version_7_windows_7/2015-12-10/finding/V-32828
- This script ensures the website is in each machine's local Java Exception sites. PLEASE avoid using this method if at all possible.  It can open your company up to MITM attacks with malicious code injection.  If your developers are unable to sign their Java code, or the vendor cannot sign their code then this CI can be deployed to the Desktops that require access to the Java site.  The intention of this script should only be to temporarily allow access while a better solution is developed.
+ The following STIG may be applied to your enterprise, preventing your users from adding Java site exceptions to their local java clients to run unsigned Java code.  This script ensures the website is in each machine's local Java Exception sites. PLEASE avoid using this method if at all possible.  It can open your company up to MITM attacks with malicious code injection.  If your developers are unable to sign their Java code, or the vendor cannot sign their code then this CI can be deployed to the Desktops that require access to the Java site.  The intention of this script should only be to temporarily allow access while a better solution is developed.
  Another alternative may be to package these applications into remote sandboxes such as Citrix or Azure Virtual Desktop.  Or, to package a portable JAR file with the Java Application deployment (See Java below for an example application for this method).
+
+ 
+ [jre_version_7_windows_7/2015-12-10/finding/V-32828](https://www.stigviewer.com/stig/java_runtime_environment_jre_version_7_windows_7/2015-12-10/finding/V-32828)
+ 
 
  - **MappedNetDriveScraper.ps1**
  This script will run in the user context to dump all mapped network drives.  This can be useful when planning a user profile migration or determining which file servers are still in use.  A DEV item was left to use NT*.dat file to utilize an admin account to search all machine profiles mapped drives, but the project I worked on did not need to utilize this extent yet.
@@ -31,7 +34,9 @@ This vendor requires T2 to install a license manually on ALL user profiles on ea
 
 - **Misc**
 Sigmaplot Licensing Path: C:\ProgramData\SafeNet Sentinel\Sentinel LDK
-Setting Outlook presence indicator to teams(alternatives Lync, Cisco Jabber, Zoom): ```new-itemproperty -path "HKCU:SOFTWARE\IM Providers" -name "DefaultIMApp" -propertytype String -value "Teams" -force```
+Setting Outlook presence indicator to teams(alternatives Lync, Cisco Jabber, Zoom): 
+
+```new-itemproperty -path "HKCU:SOFTWARE\IM Providers" -name "DefaultIMApp" -propertytype String -value "Teams" -force```
 
 ## Windows Operations
 ### For Windows Server/Desktop Administrators, Tier 2 Help desk, Root Cause Analysis, etc
@@ -76,7 +81,9 @@ In some environments anyone utilizing Remote Desktop may encounter screen lockin
 Can be used to determine the latest changes on a PC (installed software, or updates).  This is useful when performing RCA, determining what might have caused recent issues on machines reporting common issues.
 
 - **RegistryPOLfix.ps1**
-Suspecting that registry.pol file corruption causes the following issues.  This script makes an attempt to gather data from suspected endpoints and identify trends.  It will also remediate so the problem should not persist.  This was an issue documented on many forums effecting Windows 10.  I'm not sure if this persisted with Windows 11 as my role transitioned away from this type of activity.  -Bitlocker will not properly install MBAM & Encrypt (FVE registry key error), -Slow boot times (GPO apply times extended), -certs not being received (Domain trust is lost), -improve long term SCCM client health (Patch compliance may suffer). Alternative CMPivot Query:    ```File('C:\Windows\System32\GroupPolicy\Machine\Registry.pol') | project Device, FileName, Size, LastWriteTime```
+Suspecting that registry.pol file corruption causes the following issues.  This script makes an attempt to gather data from suspected endpoints and identify trends.  It will also remediate so the problem should not persist.  This was an issue documented on many forums effecting Windows 10.  I'm not sure if this persisted with Windows 11 as my role transitioned away from this type of activity.  -Bitlocker will not properly install MBAM & Encrypt (FVE registry key error), -Slow boot times (GPO apply times extended), -certs not being received (Domain trust is lost), -improve long term SCCM client health (Patch compliance may suffer). 
+
+Alternative CMPivot Query:    ```File('C:\Windows\System32\GroupPolicy\Machine\Registry.pol') | project Device, FileName, Size, LastWriteTime```
 
 - **ScheduledTask.ps1**
 This is ideal for running administrative tasks or maintenance scripts that need to be executed immediately without manual intervention. For example, applying configuration changes, collecting logs, or running diagnostics.  The task can be remotely scheduled, and executed at a time specified.  In this example a 60 second timer is initiated for immediate deployment.  It is particularly useful for one-time or ad hoc tasks that do not need a permanent presence in Task Scheduler. This approach minimizes long-term overhead and avoids clutter.
@@ -90,11 +97,16 @@ Detect if a specified program is x64 installed.  Prioritize that path.  But, if 
 
  - **Misc**
  Get Health of machines Registry.pol to detect for potential compliance health issues
+
+
  ```(Get-Content -Encoding Byte -Path \\$hostname\c$\Windows\System32\GroupPolicy\Machine\Registry.pol -TotalCount 4)```
 
- robocopy commands to sync folders
+ - **robocopy** commands to sync folders
+
+
  ```robocopy "$Source\$user" "$dest\$user" /E /Z /W:2 /R:30 /fft /MT:10 /LOG+:D:\RoboCopy.log```
- Audit
+ - Audit
+
  ```robocopy "$Source\$user" "$dest\$user"  /e /l /ns /njs /njh /ndl /fp /LOG+:D:\RoboCopyAudit.log```
 
 ### For End User continuous improvements
@@ -108,16 +120,19 @@ This is an attempt to elevate compliance for chrome installs that are out of dat
 - **LastActivityCheck.ps1**
 Run a timer that resets when keyboard or mouse input is detected.  Hunt for stealthy mouse jigglers, or scroll lock spammers built in to conference kiosks.  Additionally, continuous logging could be built into this as a persistent service to detect if there is a consistent activity on a schedule.  
 Ex: the mouse jiggles every 3m.  You will be able to see history of device activity every 3m.
-https://www.stigviewer.com/stig/microsoft_windows_11/2022-06-24/finding/V-253297
+
+[microsoft_windows_11/2022-06-24/finding/V-253297](https://www.stigviewer.com/stig/microsoft_windows_11/2022-06-24/finding/V-253297)
 
 - **ServicesStopDisableReport.ps1**
  Stop a Service, Disable the Service, and then report to confirm it's status.  In this example, the printer spooler is used.
-https://www.cisa.gov/news-events/alerts/2021/06/30/printnightmare-critical-windows-print-spooler-vulnerability
+
+[rintnightmare-critical-windows-print-spooler-vulnerability](https://www.cisa.gov/news-events/alerts/2021/06/30/printnightmare-critical-windows-print-spooler-vulnerability)
 
 - **UserLoginUptime.ps1**
 Runs during the users logged in session.  It will continue to count time as soon as it starts.  This can be useful when testing or troubleshooting the session logoff policy delay in remote sessions.  
 Ex: the session may disconnect, but leave the user logged in.  After re-establishing the connection, you can detect the time the session was idle, disconnected without having been logged out.
-https://www.stigviewer.com/stig/windows_server_2012_2012_r2_member_server/2015-06-26/finding/V-3458
+
+[2012_r2_member_server/2015-06-26/finding/V-3458](https://www.stigviewer.com/stig/windows_server_2012_2012_r2_member_server/2015-06-26/finding/V-3458)
 
 # Active Directory
 
@@ -128,24 +143,37 @@ Script gathers the Active Directory lock state of an account and reads out the s
 Some of the functions used in prior scripts have been broken down here in the readme to not get too specific about how you want to gather input or export results.
 This can be useful when generating phased test rings in a staged software deployment strategy.
 
--Get-ADUser
+**-Get-ADUser**
+
 Get users that contain a specific physical office designation.  
+
 ```get-aduser -LDAPFilter "(physicaldeliveryofficename=CONTOSO/SITE/DIV/OFFICE)" | select GivenName, Surname, SamAccountName```
 
--Get-ADComputer
+**-Get-ADComputer**
+
 Get computers in AD that match a particular OU property.
+
 ```(Get-ADComputer $hostname | where {$.DistingushedName -match "Accounting"}).DistinguishedName```
 
--Get-ADGroupMember 
+**-Get-ADGroupMember**
+
 Get users that are a member of a specific AD Group:
+
 ```(Get-ADGroupMember -Identity "Contoso CustSupport").name```
 
--Get-ADOrganizationalUnit
+**-Get-ADOrganizationalUnit**
+
 Get computers in AD that match an exact OU path
+
 ```$list = (Get-ADOrganizationalUnit -SearchBase "ou=exempt,ou=instruments,dc=rcautomate,dc=com" -Filter *).DistinguishedName```
+
 select only the objects that are enabled
+
 ``` foreach ($pc in $list) {$advlist = += (get-adcomputer -Searchbase "$pc" -Properties -Name -Filter * | Where-Object {$_.Enabled -eq $true}).Name}```
+
+
 sort and dedupe
+
 ``` $advlist | Sort-Object | Select-Object -Unique```
 
  - **Compare-UserFolder-ADHomepath.ps1**
@@ -157,37 +185,50 @@ Troubleshooting: Detect misconfigured or missing homedirectory entries in AD for
 
 **IDPrimaryUserFromList.ps1**
 This will identify the primary user remotely on a list of machines you input.  This can be useful if you've been unable to identify a primary machine user by other means, or the primary user is suspected to be incorrect.  Also can be useful when attempting to track down machines for property management.
+
 ```(Get-WmiObject -Class win32_process -ComputerName $Hostname -ErrorAction SilentlyContinue | Where-Object name -Match explorer -ErrorAction SilentlyContinue).getowner().user```
 
 **Intake Data from csv that contains a header**
+
 ```$computers = Import-Csv C:\Users\RCurtis\Documents\icd.csv -Header HN; foreach ($item in $computers.Hostname){}```
 
 **Use PSEXEC with a batch list of machines, execute powershell code remotely**
 This script will grab the local machine certs to check validity.  Can be useful when troubleshooting NAC 802.1x, or CAC/PIV authentication issues.
+
 ```PsExec.exe -s -c -f @PCs.txt powershell "Get-ChildItem Cert:\LocalMachine\My -Recurse | Select Subject, NotAfter"```
 
 **PSEXEC with CAC, PIV, or yubikey SmartCard**
+
 ```runas /smartcard "psexec \\hostname powershell.exe -windowstyle hidden -execution policy bypass -file \\contoso.com\script.ps1 & pause"```
 
 **Download multiple JAR in pack200 format**
+
 This downloaded IPA JAR files for portable application launching for non-admin accounts.  This link is no longer kept current, but JARS can be retrieved from desktop installer.
+
 ```('ipa', 'appThird1', 'appThird2', 'commonThird') | foreach { (Invoke-WebRequest -Uri "https://analysis.ingenuity.com/pa/public/$_.jar" -Outfile "C:\Temp\IPA\$_.jar" -ErrorAction stop -Headers @{'Accept-Encoding' = 'pack200-gzip'; 'Content-Type' = 'application/x-java-archive'})}```
 
 **Pipe output to an external logfile**
 Must have write access to fileshare or path
+
 ``` | Out-File -FilePath \\fileserver01\Telemetry\output.log -Append```
 
 **Get Hostnames by IP address method**
 A .NET class that performs a reverse DNS lookup
+
 ```$hostname = [System.Net.Dns]::GetHostByAddress($IP.IP).Hostname```
+
 Omit the .NET class dependency and use builtin cmdlet
+
 ```Resolve-DnsName -Name $IP -Reverse```
 
 **Get the OS build number**
+
 ```(Get-WmiObject Win32_OperatingSystem).BuildNumber```
 
 **Workaround: .ssh folder may become inaccessible**
-```cd C:\Users\User.Name; takeown /F ".ssh" /d Y /r;``` Delete the folder, then ask user to login
+
+```cd C:\Users\User.Name; takeown /F ".ssh" /d Y /r;``` 
+Delete the folder, then ask user to login
 
 # Batch
 
@@ -195,18 +236,23 @@ Omit the .NET class dependency and use builtin cmdlet
 An example bat file installer using generic language.  The license installer example uses Lasergene DNAstar
 
 **Prerequisite Redistributable**
+
 ```"%~dp0vcredist2012_x64.exe"```
 
 **Silent EXE installer switch**
+
 ```"\\fileshare01\installers\App76\App76_setup_x64.exe" /s --ini="\\fileshare01\installers\App76\setup.xml" --logdir="C:\Program Files\Contoso\Logs"```
 
 **Alternate logfile method**
+
 ```%~dp0setup.exe /v "/lv C:\Progra~1\Contoso\Logs\App315.log /qb CUSTOM_PROPERTY=True"```
 
 **Silent MSI installer switch**
-```msiexec.exe /i "%~dp0setup.msi" /qb /l*v "C:\Program Files\Contoso\Logs\App315.log" REBOOT=ReallySuppress```
+
+``msiexec.exe /i "%~dp0setup.msi" /qb /l*v "C:\Program Files\Contoso\Logs\App315.log" REBOOT=ReallySuppress``
 
 **Powershell script start**
+
 ```SET PSPath=%~dp0CopyLicense.ps1; Powershell -NoProfile -ExecutionPolicy Bypass -Command "& '%PSPath%'";```
 
 # Crypto
