@@ -9,8 +9,8 @@
 #### CTRL+F Find Files
 
 ## SCCM / MECM Misc Scripts
- - **JavaExceptions JavaExceptionSitesCI.ps1**
- The following STIG may be applied to your enterprise, preventing your users from adding Java site exceptions to their local java clients to run unsigned Java code.  This script ensures the website is in each machine's local Java Exception sites. PLEASE avoid using this method if at all possible.  It can open your company up to MITM attacks with malicious code injection.  If your developers are unable to sign their Java code, or the vendor cannot sign their code then this CI can be deployed to the Desktops that require access to the Java site.  The intention of this script should only be to temporarily allow access while a better solution is developed.
+ - **JavaExceptions/JavaExceptionSitesCI.ps1**
+ The following STIG may be applied to your enterprise, or similar AD Java restriction in browsers, preventing your users from adding Java site exceptions to their local java clients to run unsigned Java code.  This script ensures the website is in each machine's local Java Exception sites. PLEASE avoid using this method if at all possible.  It can open your company up to MITM attacks with malicious code injection.  If your developers are unable to sign their Java code, or the vendor cannot sign their code then this CI can be deployed to the Desktops that require access to the Java site.  The intention of this script should only be to temporarily allow access while a better solution is developed.
  Another alternative may be to package these applications into remote sandboxes such as Citrix or Azure Virtual Desktop.  Or, to package a portable JAR file with the Java Application deployment (See Java below for an example application for this method).
 
  
@@ -26,7 +26,7 @@ Some users wish to have their onedrive file available offline always.  They may 
  - **SCCM-PullWinPEImagingLogs**
  Useful if your environment utilizes WinPE environment for Imaging Desktops.  This captures logfiles from both the pre-and post-imaging states to ensure you get full coverage when troubleshooting issues with imaging completion.  You can then utilize grep or Select-String in powershell to find keywords or error messages related to your issue.
 
-- **Sigmaplot\SigmaplotALLusersLicense.ps1**
+- **Sigmaplot/SigmaplotALLusersLicense.ps1**
 This vendor requires T2 to install a license manually on ALL user profiles on each machine.  Applicable to Sigmaplot 14.5 and below.  Not confirmed on 15+.  This is quite burdensome for T2, so this script was created to mitigate hundreds of service request tickets to manually install the license.  This Installs license to all existing users that have accounts on a single machine.  Additionally, ensures each new user that logs in gets the current license registration.  Utilizes ActiveSync registry to install the license on new user logins so they will also have access to Sigmaplot.  Without these mitigations T2 support will need to reinstall the sigmaplot license and enter custom information for each unique user where Sigmaplot is installed.
 
  - **RCAScanner-DLP38Citrix**
@@ -56,7 +56,7 @@ Compare the Certificates between two machines.  This can be useful to determine 
  - **InstalledAppCondition.ps1**
  When executing, it will detect if the client has an application installed, and take an action if it is not.  This can become useful if your enterprise has decided it will not automatically deploy a specific piece of software, and the users must manually install it themselves.  In this example, it detects Citrix Workstation, and if it's not installed, will instruct and take the user to the SCCM Software Center to be installed by self service.  Once the dependency is installed, the application will launch internet explorer, and take the user to the Citrix Storefront page.  This automates some of the user instruction, easing some burden on the help desk.  
 
- - **JavaExceptions JavaExceptionSitesUser.ps1**
+ - **JavaExceptions/JavaExceptionSitesUser.ps1**
  This script will assume the logged on user had an issue with Java site launching.  Policy is restricting unsigned code being run.  See "Java" above for disclaimer.  It utilizes User permissions, so a shortcut to the script can be deployed to users that can run it with self-service, or a technician can easily instruct them to run it without remote access.  This will detect if the exception.sites file has been defined to the user profile path yet.  If not, it will copy it from the specified file share.  The specified file share is assumed to be hosting a list of sites to be excepted for Java Checks.  The exception.sites file is a centralized, managed file with only user read access.  Users/Everyone should never be granted access to modify the remote file.
 
  - **KeepAlive.ps1**
@@ -67,6 +67,12 @@ After a technician images a users PC and have arrived to collect the laptop, the
 
  - **ModifyShortcutPath.ps1**
  Instead of replacing shortcuts, modify only the paths.  This can be useful when attempting to maintain the ico and extended attributes without re-creating them from scratch.  If the shortcuts were created manually, and you have numerous ones to manage, this can be utilized.
+
+- **NonBaselineImageSoftware.ps1**
+Run this script on a PC that is suspected to have installed software drift from the enterprise baseline.
+Software installation drift can cause various issues with the hardware, and identifying what is foreign is a great first step to find the culprit.
+This is also useful when migrating a users PC.  It can help identify forgotten requirements from the user.
+**This allows T2 to be proactive, mitigating future tickets and lost productivity as a result of PC refresh.**
 
 - **OnPremImageTopoff.ps1**
 When delivering a PC, this script optimizes the technician and the user experience to reduce future ticket requests, and ease user onboarding to their new PC.  Some users in the organization may require an application be installed, and have common issues with self-service after machine delivery.  The technician can identify which applications the user may wish to utilize proactively without even needing to ask them.  This utilizes defined AD groups to determine software the user should be associated with.  In this example citrix is used, opening SCCM software center to self-service pull the receiver software.
