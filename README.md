@@ -1,4 +1,12 @@
-# Files
+### “Effective communication is automating it away—it no longer requires thought, effort, or delay.” -| RCautomate.com
+
+> Automate the words,  
+> Communication fades fast—  
+> No thought, no delay.  
+> Effective execution,  
+> Process perfect flow.
+
+#### CTRL+F Find Files
 
 ## SCCM / MECM Misc Scripts
  - **JavaExceptions JavaExceptionSitesCI.ps1**
@@ -54,6 +62,9 @@ After a technician images a users PC and have arrived to collect the laptop, the
 
  - **ModifyShortcutPath.ps1**
  Instead of replacing shortcuts, modify only the paths.  This can be useful when attempting to maintain the ico and extended attributes without re-creating them from scratch.  If the shortcuts were created manually, and you have numerous ones to manage, this can be utilized.
+
+- **OnPremImageTopoff.ps1**
+When delivering a PC, this script optimizes the technician and the user experience to reduce future ticket requests, and ease user onboarding to their new PC.  Some users in the organization may require an application be installed, and have common issues with self-service after machine delivery.  The technician can identify which applications the user may wish to utilize proactively without even needing to ask them.  This utilizes defined AD groups to determine software the user should be associated with.  In this example citrix is used, opening SCCM software center to self-service pull the receiver software.
 
  - **PsExec-SCCMRemoteInstall.ps1**
  I would recommend looking into Ansible for standardizing operations automation tasks like this. Specifically for SCCM, utilize the builtin tools unless attempts have already failed.  You may have a use case needing to quickly resolve a software deployment project without as much oversight needed.  This is specific to installing SCCM Client on remote machines without having to RDP into each machine.  However, the batch files executed could be swapped out to remotely deploy with PsExec on any other silently installed applications.  The only dependencies assume you have PSEXEC.exe already downloaded to the current working directory, you are an administrator on the remote machines, and policy allows PSEXEC to run.  Modern threat agents may assume suspicious behavior from PSEXEC, so utilizing your enterprise standard remote deployment tools is recommended.
