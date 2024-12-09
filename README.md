@@ -19,6 +19,9 @@
 
  - **MappedNetDriveScraper.ps1**
  This script will run in the user context to dump all mapped network drives.  This can be useful when planning a user profile migration or determining which file servers are still in use.  A DEV item was left to use NT*.dat file to utilize an admin account to search all machine profiles mapped drives, but the project I worked on did not need to utilize this extent yet.
+ 
+ - **MigrateUserPrintersPaths.ps1**
+ If the organization did not deploy network printers to user profiles without a common network prefix, and/or the DNS records cannot yet be migrated, this script may be useful to migrate all currently mapped user printers to a new path.  This must be run within the user context, while they are logged in, and a common network path they should have write access to writes telemetry log output to review for success / failure.  This will benefit gains in understanding who, how many, and what network location the printers on every machine in the enterprise are mapped to for future printer modernization or planning.
 
  - **OneDriveAvailableOffline.ps1**
 Some users wish to have their onedrive file available offline always.  They may travel often, or commonly not have access to the internet.  You may have a group you wish to force these settings to, so the users will not need to encounter the issue of being in a spot without their files downloaded.  This script was drafted and partially tested.  Additional functionality will need to be added to have a successful deployment of this.
