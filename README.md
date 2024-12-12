@@ -50,6 +50,9 @@ Compare the Certificates between two machines.  This can be useful to determine 
  - **ExtractICOfromEXE.ps1**
  Extracts an ico image file from an EXE.  This can be useful if building your own custom shortcuts for user delivery.
 
+ - **FileExclusionScanner.bat**
+A legacy batch script that was retired before converting to powershell.  A backup solution excludes some file extensions from backup folders to reduce the expense of storage at the enterprise.  T2 would like to have the users run this to communicate to them which files they need to make provisions on their own to create backups.  Included are common large data file extensions and can be reduced to optimize storage overhead. (installers, virtual machine files, statistical data files, database, cd images, music files)
+
  - **FlexLM.ps1**
  This script assists with automating migration of the local client license configuration files for various licensing software.  It allows you to paste in a list of machines and will iterate through them to replace the licensing files.  It requires a fileshare to copy the new files from.  It also partially documents how to build a remote monitoring service to ensure that the health of the service is maintained.
 
