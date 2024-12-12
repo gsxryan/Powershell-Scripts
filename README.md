@@ -47,6 +47,9 @@ Setting Outlook presence indicator to teams(alternatives Lync, Cisco Jabber, Zoo
  - **CompareCertificates.ps1**
 Compare the Certificates between two machines.  This can be useful to determine certificate or authentication behavioral differences between PCs.
 
+ - **DeleteEmptyFolders.ps1**
+Search a directory and subfolders for empty folders.  If there are any identified, print them to screen for confirmation and then delete them if desired.
+
  - **ExtractICOfromEXE.ps1**
  Extracts an ico image file from an EXE.  This can be useful if building your own custom shortcuts for user delivery.
 
@@ -118,6 +121,10 @@ Detect if a specified program is x64 installed.  Prioritize that path.  But, if 
  ```(Get-Content -Encoding Byte -Path \\$hostname\c$\Windows\System32\GroupPolicy\Machine\Registry.pol -TotalCount 4)```
 
  - **robocopy** commands to sync folders
+
+robocopy source destination mirror (make sure destination doesn't exist) /Z (restartable mode) 
+#/W (wait between retry) /R:4 (only retry 4 times) /fft ( fat file times, legacy beneficial if both volumes are not NTFS)
+#/MT (multithreaded 8x, higher CPU use)
 
 
  ```robocopy "$Source\$user" "$dest\$user" /E /Z /W:2 /R:30 /fft /MT:10 /LOG+:D:\RoboCopy.log```
