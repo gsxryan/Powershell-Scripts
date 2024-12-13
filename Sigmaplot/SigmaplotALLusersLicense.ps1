@@ -18,12 +18,13 @@ $ToolFolder = "Program Files\Contoso\Tools"
 
 #All historic logged in users on the machine should allocate the license.
 #Everything except $CurrentUser Requires admin rights.  If admin rights are not granted it will only do current user, with all other accounts failing.  This is expected.
-ForEach ($user in (Get-ChildItem -Name "C:\Users" -Exclude Public, Administrator, NetworkService, bogus, dummy, TempUser, LocalService, Default, "Default User", "All Users")) 
+ForEach ($user in (Get-ChildItem -Name "C:\Users" -Exclude Public, Administrator, NetworkService, LocalService, Default, "Default User", "All Users")) 
 {
 New-Item -ItemType Directory -Force -Path "C:\Users\$user\AppData\Local\SafeNet Sentinel\Sentinel LDK"
 Copy-Item "$WinAppsPath\hasp_107466.ini" -Destination "C:\Users\$user\AppData\Local\SafeNet Sentinel\Sentinel LDK" -Force
 
 #Set EMS.ini to look at network license, NOT the auto (30 day trial)
+#Tech support would not give guidance on how to automate this, and inconvenienced users & admins with self-service.
 #Set EMS.ini to NOT check for updates on startup
 $OneDrive = Test-Path "C:\Users\$user\$ODFolder\Documents"
 if ($OneDrive -eq $true){
