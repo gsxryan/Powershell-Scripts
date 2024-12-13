@@ -107,6 +107,9 @@ Alternative CMPivot Query:    ```File('C:\Windows\System32\GroupPolicy\Machine\R
 This is ideal for running administrative tasks or maintenance scripts that need to be executed immediately without manual intervention. For example, applying configuration changes, collecting logs, or running diagnostics.  The task can be remotely scheduled, and executed at a time specified.  In this example a 60 second timer is initiated for immediate deployment.  It is particularly useful for one-time or ad hoc tasks that do not need a permanent presence in Task Scheduler. This approach minimizes long-term overhead and avoids clutter.
 After execution, the script removes the scheduled task, maintaining a clean and secure system state. This is particularly valuable in scenarios where automation scripts are used for troubleshooting or quick fixes, and there’s no need to retain the scheduled task after execution.
 
+- **SmartCardTroubleshoot.ps1**
+Can be useful to help troubleshooting misbehaving smart card, PIV, CAC cards when they are not detecting properly, or fast enough.
+
 - **TaskPinger.ps1**
 This script makes an attempt to optimize the issue with T2 call, no answer.  Avoiding spending time leaving excessive emails or messages to the customer and waiting for callbacks.  Ensure that the PC is online, and active in AD, another partial stage will notify that a user is online when their Teams status becomes online, ensuring that they should be available to respond.  At the time it utilized the SkypeAvailability script, which is not published here since it is now EOL.  This is a placeholder to note that this optimization can be redeveloped using teams.  It attempts to confirm both network connectivity and the existence of a corresponding Active Directory object for each hostname.
 Outputs relevant information about each hostname (e.g., AD details, online status).
