@@ -121,6 +121,9 @@ Outputs relevant information about each hostname (e.g., AD details, online statu
 - **PingBySpecificPort.ps1**
 Take a batch list of machines and ping them.  This will prompt for a list of machines, and a specific TCP port, if you wish to not default to ICMP.  
 
+- **SQL-AuditHTMLreporttoEmail.ps1**
+Query a SQL Database with powershell.  Output all system account users and their account status (inactive, active).  These counts are then output to a pretty HTML format and emailed to a group of users.  This is useful for periodic audit and monitoring for Aperio eSlideManager user accounts.  For example, you can monitor if a unapproved administrator account is created, or users have permissions they should not have.
+
 - **UserAvailMon-skype.ps1**
 Reports ICMP Ping + Skype User Availability, for use when identifying idle systems to RDP into to complete work that has not yet been automated for deployment.  Users that will commonly not callback for service calls can be monitored for activity.  When their machine is online, and inactive, we can login to complete our work without interrupting the user.  For example, a user is not commonly available, but we catch them on their lunch break to do some maintenance that has not been able to be completed on their workstation.  As they are AFK, and their user profile state is maintained, we will not disturb them, and can close the service ticket.
 
