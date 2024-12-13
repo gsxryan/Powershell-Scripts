@@ -118,6 +118,9 @@ Can be useful to help troubleshooting misbehaving smart card, PIV, CAC cards whe
 This script makes an attempt to optimize the issue with T2 call, no answer.  Avoiding spending time leaving excessive emails or messages to the customer and waiting for callbacks.  Ensure that the PC is online, and active in AD, another partial stage will notify that a user is online when their Teams status becomes online, ensuring that they should be available to respond.  At the time it utilized the SkypeAvailability script, which is published in UserAvailMon-Skype.ps1.  This is a placeholder to note that this optimization can be redeveloped using teams.  It attempts to confirm both network connectivity and the existence of a corresponding Active Directory object for each hostname.
 Outputs relevant information about each hostname (e.g., AD details, online status).
 
+- **PingBySpecificPort.ps1**
+Take a batch list of machines and ping them.  This will prompt for a list of machines, and a specific TCP port, if you wish to not default to ICMP.  
+
 - **UserAvailMon-skype.ps1**
 Reports ICMP Ping + Skype User Availability, for use when identifying idle systems to RDP into to complete work that has not yet been automated for deployment.  Users that will commonly not callback for service calls can be monitored for activity.  When their machine is online, and inactive, we can login to complete our work without interrupting the user.  For example, a user is not commonly available, but we catch them on their lunch break to do some maintenance that has not been able to be completed on their workstation.  As they are AFK, and their user profile state is maintained, we will not disturb them, and can close the service ticket.
 
