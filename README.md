@@ -62,6 +62,9 @@ A legacy batch script that was retired before converting to powershell.  A backu
  - **FolderFullPermissions.ps1**
  One that should be used as a last resort for application useability.  Policy should be modified instead, but this can be a temporary workaround, or used in troubleshooting the source for application permission issues.  In this example VSCode is tested to allow automatic updates.
 
+ - **HomeFolderADCleanup.ps1**
+This in general is for cleaning up inactive user's home folders on a file share.  From a list of user file directory folders, take each name and scan for inactive accounts.  The account file directories that are inactive, mirror the data to a archive path.  From the source path, make sure to delete the data after it's been successfully archived.
+
  - **InstalledAppCondition.ps1**
  When executing, it will detect if the client has an application installed, and take an action if it is not.  This can become useful if your enterprise has decided it will not automatically deploy a specific piece of software, and the users must manually install it themselves.  In this example, it detects Citrix Workstation, and if it's not installed, will instruct and take the user to the SCCM Software Center to be installed by self service.  Once the dependency is installed, the application will launch internet explorer, and take the user to the Citrix Storefront page.  This automates some of the user instruction, easing some burden on the help desk.  
 
