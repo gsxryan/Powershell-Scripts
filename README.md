@@ -20,6 +20,10 @@
  - **MappedNetDriveScraper.ps1**
  This script will run in the user context to dump all mapped network drives.  This can be useful when planning a user profile migration or determining which file servers are still in use.  A DEV item was left to use NT*.dat file to utilize an admin account to search all machine profiles mapped drives, but the project I worked on did not need to utilize this extent yet.
  
+ - **MemoryHandleTracing.ps1**
+ The purpose of this telemetry script is to identify anomalies in a specific running process.  The primary case for this script was to identify memory leaks in McAfee fcags.exe.  A bug was reported and root cause identified with help of this analysis.
+This could be useful for tracking other instances as well. It will report at 15 minute intervals very detailed RAM usage (ballooning non-paged pool), along with Uptime, Model, Username, BIOS version, CPULoad%, AvailableRAM, Handles, PageFile, Pagefile Peak, Quota NonPaged Use, Quota NonPaged Peak, and EXE Version.  For future ideas a 2nd exe could be added to this to simultaneously monitor on many machines.  A version mismatch with machines having errors could indicate incompatibility.
+
  - **MigrateUserPrintersPaths.ps1**
  If the organization did not deploy network printers to user profiles without a common network prefix, and/or the DNS records cannot yet be migrated, this script may be useful to migrate all currently mapped user printers to a new path.  This must be run within the user context, while they are logged in, and a common network path they should have write access to writes telemetry log output to review for success / failure.  This will benefit gains in understanding who, how many, and what network location the printers on every machine in the enterprise are mapped to for future printer modernization or planning.
 
