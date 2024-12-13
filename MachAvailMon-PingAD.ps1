@@ -1,4 +1,4 @@
-
+#Verify a machine is online (pingable), and exists and is active in Active Directory
 #powershell.exe -executionpolicy bypass "./SkypeAvailability.ps1 -path 'Z:\Powershell\List.csv'"
 #NOTE: Must import CSV File with 2 Headers (Username, Hostname)
 
