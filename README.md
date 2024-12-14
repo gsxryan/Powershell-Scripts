@@ -165,6 +165,10 @@ Ex: the mouse jiggles every 3m.  You will be able to see history of device activ
 
 [microsoft_windows_11/2022-06-24/finding/V-253297](https://www.stigviewer.com/stig/microsoft_windows_11/2022-06-24/finding/V-253297)
 
+- **NessusCSVreportPrioritizer.ps1**
+Parse a CSV File exported from Nessus reports, and categorize vulnerabilities by numerous priorities.  Sort by highest priority vulnerabilities and by team to help delegate remediation.
+
+
 - **ServicesStopDisableReport.ps1**
  Stop a Service, Disable the Service, and then report to confirm it's status.  In this example, the printer spooler is used.
 
