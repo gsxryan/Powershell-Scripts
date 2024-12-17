@@ -3,6 +3,10 @@
 Parse a CSV File exported from Nessus reports, and categorize vulnerabilities by numerous priorities
 Sort by highest priority vulnerabilities and by team to help delegate remediation.
 
+Utilizing the following exported reporting values from CSV:
+IP_Scope, SystemName, Family, Plugin, Plugin Name, Severity, IP Address, Protocol, Port, Exploit?, Repository, MAC Address, DNS Name, NetBIOS Name, Plugin Output, Exploit Frameworks, Synopsis, Description, Solution, CVSS V2 Base Score, CVSS V3 Base Score, CVE, First Discovered, Last Observed, Short Name, Vuln Publication Date, Patch Publication Date 
+We transform some of these default values to make them more easily calculable.
+
 Prioritize First Observed since they likely have been exposed too long.
 Create Definition file of Server name to Assignment
 Report summary per user / machine, Sort by highest count.
@@ -58,7 +62,7 @@ foreach ($server in $DevServers){
 
 #Linux/HPC/Quantum/Redhat
 $Team='Linux'
-$LinuxServers=@('hpc201','hpc202','hpc203','cactiapp01')
+$LinuxServers=@('linux20','linux22','linux23','cactiapp01')
 foreach ($server in $LinuxServers){
     $TeamAssignment += @([pscustomobject]@{Hostname=$server;Team=$Team}) 
 }
@@ -153,7 +157,7 @@ Write-Host "Total medium Vulnerabilities:"
 Write-Host "\
 \
 "
-#Internal application remediation timeline defined
+#Internal application remediation timeline defined by NIST 800-53, or DISA STIG
 $ThirtyDays = ($TodaysDate).AddDays(-30) #Critical/High
 $SixtyDays = ($TodaysDate).AddDays(-60) #Medium
 $NinetyDays = ($TodaysDate).AddDays(-90) #Low
