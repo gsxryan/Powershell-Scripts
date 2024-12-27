@@ -9,6 +9,9 @@
 #### CTRL+F Find Files
 
 ## SCCM / MECM Misc Scripts
+ - **ActivSetupReg-RunonceEachUser.ps1**
+ For situations where you need to deploy a script to each logged on user on a machine ActivSetup can be a good solution.  This utilizes versioning, so it will only deploy once to each user, until the version increment in registry is increased.  Utilizing this with SCCM can make it even more powerful strategy for configuration management.
+
  - **JavaExceptions/JavaExceptionSitesCI.ps1**
  The following STIG may be applied to your enterprise, or similar AD Java restriction in browsers, preventing your users from adding Java site exceptions to their local java clients to run unsigned Java code.  This script ensures the website is in each machine's local Java Exception sites. PLEASE avoid using this method if at all possible.  It can open your company up to MITM attacks with malicious code injection.  If your developers are unable to sign their Java code, or the vendor cannot sign their code then this CI can be deployed to the Desktops that require access to the Java site.  The intention of this script should only be to temporarily allow access while a better solution is developed.
  Another alternative may be to package these applications into remote sandboxes such as Citrix or Azure Virtual Desktop.  Or, to package a portable JAR file with the Java Application deployment (See Java below for an example application for this method).
