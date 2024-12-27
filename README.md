@@ -93,6 +93,9 @@ After a technician images a users PC and have arrived to collect the laptop, the
  - **ModifyShortcutPath.ps1**
  Instead of replacing shortcuts, modify only the paths.  This can be useful when attempting to maintain the ico and extended attributes without re-creating them from scratch.  If the shortcuts were created manually, and you have numerous ones to manage, this can be utilized.
 
+- **MonitorRunningService.ps1**
+Query a running executable and output if it is active or not.  This can be useful when monitoring a application and ensuring that it stays running.
+
 - **NonBaselineImageSoftware.ps1**
 Run this script on a PC that is suspected to have installed software drift from the enterprise baseline.
 Software installation drift can cause various issues with the hardware, and identifying what is foreign is a great first step to find the culprit.
