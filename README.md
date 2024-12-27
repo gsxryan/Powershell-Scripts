@@ -126,6 +126,9 @@ After execution, the script removes the scheduled task, maintaining a clean and 
 - **SmartCardTroubleshoot.ps1**
 Can be useful to help troubleshooting misbehaving smart card, PIV, CAC cards when they are not detecting properly, or fast enough.
 
+- **TXTfileperCSVentry.ps1**
+Using existing CSV file, choose a specific column.  For that column, each value that is populated will create a $value.txt file.
+
 - **MachAvailMon-PingAD.ps1**
 This script makes an attempt to optimize the issue with T2 call, no answer.  Avoiding spending time leaving excessive emails or messages to the customer and waiting for callbacks.  Ensure that the PC is online, and active in AD, another partial stage will notify that a user is online when their Teams status becomes online, ensuring that they should be available to respond.  At the time it utilized the SkypeAvailability script, which is published in UserAvailMon-Skype.ps1.  This is a placeholder to note that this optimization can be redeveloped using teams.  It attempts to confirm both network connectivity and the existence of a corresponding Active Directory object for each hostname.
 Outputs relevant information about each hostname (e.g., AD details, online status).
