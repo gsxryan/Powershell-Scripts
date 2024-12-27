@@ -336,6 +336,9 @@ Write a NodeCore migrations script (Windows)
 Copies Nodecore wallet, PoP files, blockchain to latest version
 Instead of migrating-we copy- rather than delete older sensitive data
 
+- **MiningAndGaming.ps1**
+For those gamers utilzing their graphics power for Nicehash mining, this automation ensures that mining stops when gaming starts.  And mining resumes when gaming stops.  
+
 - **Install-NodeCore.ps1**
 Install NodeCore in the most automated fashion.  (windows)
 Checks to see if the prerequisites are met (Java), downloads, installs, and launches nodecore.
