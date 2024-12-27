@@ -48,12 +48,15 @@ Setting Outlook presence indicator to teams(alternatives Lync, Cisco Jabber, Zoo
 ## Windows Operations
 ### For Windows Server/Desktop Administrators, Tier 2 Help desk, Root Cause Analysis, etc
 
+ - **Clean-DuplicateLines.ps1**
+When you have many text files that have duplicate lines, this script can be useful to sort, and eliminate any duplicate lines for increased efficiency.
+
  - **Compare-Certificates.ps1**
 Compare the Certificates between two machines.  This can be useful to determine certificate or authentication behavioral differences between PCs.
 
  - **Compare-FolderContents-SHA256.ps1**
  Compare two separate paths (2 servers) folder contents using each files SHA256 hash, and find the differences.  This can be useful when diagnosing issues between two applications or server behavior.  I specifically have used this to reverse engineer application ini or configuration files to declare closed source properties manually.
- 
+
  - **DeleteEmptyFolders.ps1**
 Search a directory and subfolders for empty folders.  If there are any identified, print them to screen for confirmation and then delete them if desired.
 
