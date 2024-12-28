@@ -337,7 +337,7 @@ Copies Nodecore wallet, PoP files, blockchain to latest version
 Instead of migrating-we copy- rather than delete older sensitive data
 
 - **MiningAndGaming.ps1**
-For those gamers utilzing their graphics power for Nicehash mining, this automation ensures that mining stops when gaming starts.  And mining resumes when gaming stops.  
+For those gamers utilizing their graphics power for Nicehash or other client mining, this automation ensures that mining stops when gaming starts.  And mining resumes when gaming stops.  
 
 - **Install-NodeCore.ps1**
 Install NodeCore in the most automated fashion.  (windows)
@@ -345,5 +345,16 @@ Checks to see if the prerequisites are met (Java), downloads, installs, and laun
 
 # Gaming
 
-- Check if a game is responding
+- Check if a game is responding.  This example uses Outriders.
+
+
 ```(Get-Process Madness-WinGDK-Shipping).Responding```
+
+- **Steam Server launcher with password** 
+
+Launch a steam game with the server password copied to clipboard.  You can more easily enter the server by CTRL+V pasting the password when automatically joining.  This example uses Valheim as an example (892970)
+
+```Start-Process "C:\Program Files (x86)\Steam\steam.exe" -ArgumentList "-applaunch 892970 +connect valheim.server.com:2456"
+
+Set-Clipboard "P@$$w0rd"```
+
