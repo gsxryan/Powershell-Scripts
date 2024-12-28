@@ -344,3 +344,6 @@ Install NodeCore in the most automated fashion.  (windows)
 Checks to see if the prerequisites are met (Java), downloads, installs, and launches nodecore.
 
 # Gaming
+
+- Check if a game is responding
+```(Get-Process Madness-WinGDK-Shipping).Responding```
