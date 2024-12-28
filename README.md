@@ -318,11 +318,18 @@ An example bat file installer using generic language.  The license installer exa
 
 # Crypto
 
-## Burstcoin (dead)
+- **MiningAndGaming.ps1**
+For those gamers utilizing their graphics power for Nicehash or other client mining, this automation ensures that mining stops when gaming starts.  And mining resumes when gaming stops.  
+
+## Burstcoin (dead coin?)
 - **burstcoin-filename-textfile.ps1** 
     List the filenames in each drive, and output them to a text file.
 
-## Veriblock (unlisted)
+## StorJ
+- **StorJV2NodeHealthAPIgrabber.ps1**
+This Scanned the old V2 API endpoint to monitor storj farmer node health.  NodeID, Reputation, and responsetime were injected into a influxDB for realtime monitoring in Grafana Dashboards.
+
+## Veriblock (unlisted, news soon?)
 
 - **Veriblock PoolList**
 Maintain a list of currently mined pools. (archived)
@@ -335,9 +342,6 @@ Ping the Performance of the current PoolList for Veriblock Pools.  First uses IC
 Write a NodeCore migrations script (Windows)
 Copies Nodecore wallet, PoP files, blockchain to latest version
 Instead of migrating-we copy- rather than delete older sensitive data
-
-- **MiningAndGaming.ps1**
-For those gamers utilizing their graphics power for Nicehash or other client mining, this automation ensures that mining stops when gaming starts.  And mining resumes when gaming stops.  
 
 - **Install-NodeCore.ps1**
 Install NodeCore in the most automated fashion.  (windows)
