@@ -354,7 +354,12 @@ Checks to see if the prerequisites are met (Java), downloads, installs, and laun
 
 Launch a steam game with the server password copied to clipboard.  You can more easily enter the server by CTRL+V pasting the password when automatically joining.  This example uses Valheim as an example (892970)
 
-```Start-Process "C:\Program Files (x86)\Steam\steam.exe" -ArgumentList "-applaunch 892970 +connect valheim.server.com:2456"
+```
+Start-Process "C:\Program Files (x86)\Steam\steam.exe" -ArgumentList "-applaunch 892970 +connect valheim.server.com:2456"
 
-Set-Clipboard "P@$$w0rd"```
+Set-Clipboard "P@$$w0rd"
+```
 
+- **NoMansSky / SaveGameSaver-NoPermaDeath.ps1**
+
+This program will run, and wait for No Man's Sky to start.  Once it starts it will default to backing up the save files every 15m.  This is useful when running a Hardcore / PermaDeath save file.  Especially when the game glitches or you end up dying in some way that was not your fault.  You can now restore one of the previous save files to restore your hardcore game save.  I did not end up needing this to make it to the core, but it was great peace of mind knowning that I would not waste tens of hours on the attempt if I died.
