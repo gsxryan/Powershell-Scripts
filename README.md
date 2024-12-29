@@ -335,6 +335,9 @@ This Scanned the old V2 API endpoint to monitor storj farmer node health.  NodeI
 Maintain a list of currently mined pools. (archived)
 https://gist.github.com/gsxryan/c8de9faf79a7f29bb96d925702096023
 
+- **Veriblock Pool API Scraper** Grafana-APIScraper-InfluxDB.ps1
+Scrape a list of public mining pools API data, and collect it to influxDB for Grafana Dashboard reporting and realtime alerts.  This dashboard alerted miners to pools increasing fees, pools getting stuck on blocks, Pool Version Number, and Collective hashrates on the network.  It was a publicly available service for those interested in gaining information about the status and health of the Veriblock mining pool network.  It additionally gathered data from bitcoinfees.earn.com to report the high/low/average BTC fee rates on trading networks.
+
 - **Pinger-Veriblock-Pools.ps1**
 Ping the Performance of the current PoolList for Veriblock Pools.  First uses ICMP, and uses Web Port if ICMP is unavailable. (invoke-webrequest)
 

@@ -1,5 +1,7 @@
 #StorJ Node Monitor
 
+#adapted from https://github.com/icanos/influxdb-posh
+
 #Depends:
 #InfluxDB, Grafana
 
