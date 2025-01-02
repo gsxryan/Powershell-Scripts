@@ -243,6 +243,13 @@ sort and dedupe
 
 ``` $advlist | Sort-Object | Select-Object -Unique```
 
+### Audit: 
+Display all service accounts that have not recently rotated passwords.  This export can be used to determine compliance with passwords needing to be reset every $X days.
+```
+$datereset = (Get-ADUser -Filter 'Name -like "SVCacctPrefix*" -and Enabled -eq "True"' -Properties PasswordLastSet).PasswordLastSet
+foreach ($acct in $datereset){Get-Date $acct -format "yyyy-MM-dd"}
+```
+
  - **Compare-UserFolder-ADHomepath.ps1**
  Uses: Compliance: Ensure user directories are correctly provisioned and de-provisioned according to AD.
 Cleanup: Identify and potentially delete orphaned directories to save storage.
