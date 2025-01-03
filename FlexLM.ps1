@@ -15,6 +15,10 @@ use_server.lic contents:
 SERVER LICServer01.contoso.com ANY
 USE_SERVER
 ----
+Location: C:\Program Files\OriginLab\Origin YYYY MSI
+
+DNAStar
+Location: C:\ProgramData\DNASTAR\Licenses
 
 adskflex: Autodesk / RevIt suite
 
