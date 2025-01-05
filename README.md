@@ -341,6 +341,8 @@ For those gamers utilizing their graphics power for Nicehash or other client min
 ## StorJ
 - **StorJV2NodeHealthAPIgrabber.ps1**
 This Scanned the old V2 API endpoint to monitor storj farmer node health.  NodeID, Reputation, and responsetime were injected into a influxDB for realtime monitoring in Grafana Dashboards.
+- **StorJ Node Health Monitor (Bash)**
+Developed very early on the StorJV3 project.  This was forked by the community and has matured into a script thousands have utilized to monitor node health.  https://gist.github.com/gsxryan/d23de042fce21e5a3d895005e1aeafa7
 
 ## Veriblock (unlisted, news soon?)
 
