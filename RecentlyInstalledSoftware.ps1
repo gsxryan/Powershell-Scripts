@@ -4,7 +4,7 @@
 #This is useful when performing RCA, determining what might have caused recent issues on machines reporting common issues.
 
 $Table = (Get-WinEvent -FilterHashtable @{LogName="Application";ID=11707}) | Select UserID,TimeCreated,Message
-$TableUpdates = ( Get-WinEvent -FilterHashTable @{ProviderName=�Microsoft-Windows-WindowsUpdateClient�; ID=19} | Select TimeCreated, Message )
+$TableUpdates = ( Get-WinEvent -FilterHashTable @{ProviderName="Microsoft-Windows-WindowsUpdateClient"; ID=19} | Select TimeCreated, Message )
 
 echo "SOFTWARE"
 $Table
