@@ -24,15 +24,16 @@ sudo reboot
 nvidia-smi
 
 #install FAH
-wget no-check-certificate https://download.foldingathome.org/releases/public/release/fahclient/debian-stable-64bit/v7.5/fahclient_7.5.1_amd64.deb
 
-sudo dpkg -i force-depends fahclient_7.5.1_amd64.deb
+wget no-check-certificate https://download.foldingathome.org/releases/public/release/fahclient/debian-stable-64bit/v7.5/fahclient_7.5.1_amd64.deb
+
+sudo dpkg -i force-depends fahclient_7.5.1_amd64.deb
 
 sudo /etc/init.d/FAHClient stop
 
 #configure FAH
 sudo nano /etc/fahclient/config.xml
-
+```
 <config>
   <!-- Remote Command Server -->
   <allow v='192.168.1.0/24'/>
@@ -65,5 +66,5 @@ sudo nano /etc/fahclient/config.xml
   <slot id='3' type='GPU'/>
   </slot>
 </config>
-
+```
 sudo /etc/init.d/FAHClient start
