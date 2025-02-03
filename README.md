@@ -179,6 +179,17 @@ robocopy source destination mirror (make sure destination doesn't exist) /Z (res
 This allows users to search using a keyword on all XLS and XLSX files in a subdirectory.  It will export to CSV, do a search on the CSV Flat files to find, then export data to text file and display the information in notepad.
 
 ## InfoSec
+
+- **Dump User AD Groups**
+This can be useful when populating AD groups that could identify actions to take for a specific user.
+If you want to cut the prefix out for the appname only, you can use $cut
+```
+$AppMember = whoami /groups /fo list | Select-String "Specific AD Group"
+$cut = $AppMember -replace "Group Name: Contoso\\App PREFIX ",""
+$cut
+
+```
+
 - **ChromeForceAutoupdate.ps1**
 This is an attempt to elevate compliance for chrome installs that are out of date.  As the user, force open chrome, give it time to use autoupdate policy to regain compliance. Recenter chrome as active window, and close it
 
