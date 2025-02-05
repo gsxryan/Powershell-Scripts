@@ -167,9 +167,14 @@ Detect if a specified program is x64 installed.  Prioritize that path.  But, if 
 
  - **robocopy** commands to sync folders
 
+This can be useful when the paths you are copying are too long for windows to handle.
 robocopy source destination mirror (make sure destination doesn't exist) /Z (restartable mode) 
+
 #/W (wait between retry) /R:4 (only retry 4 times) /fft ( fat file times, legacy beneficial if both volumes are not NTFS)
+
 #/MT (multithreaded 8x, higher CPU use)
+
+#/MIR mirror each side.
 
 
  ```robocopy "$Source\$user" "$dest\$user" /E /Z /W:2 /R:30 /fft /MT:10 /LOG+:D:\RoboCopy.log```
