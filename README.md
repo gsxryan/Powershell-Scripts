@@ -9,13 +9,92 @@ Automated systems can relay data instantly, integrate seamlessly, and operate 24
 
 #### Table of Contents
 - [SCCM / MECM Misc Scripts](#sccm--mecm-misc-scripts)
+  - ActivSetupReg-RunonceEachUser.ps1
+  - Java-Portable / Portable-JAR.ps1
+  - JavaExceptions/JavaExceptionSitesCI.ps1
+  - SCCM-SoftwareUpdateMon.ps1
+  - MappedNetDriveScraper.ps1
+  - MemoryHandleTracing.ps1
+  - MigrateUserPrintersPaths.ps1
+  - OneDriveAvailableOffline.ps1
+  - Sigmaplot/SigmaplotALLusersLicense.ps1
 - [Windows Operations](#windows-operations)
+  - Clean-DuplicateLines.ps1
+  - Compare-Certificates.ps1
+  - Compare-FolderContents-SHA256.ps1
+  - DeleteEmptyFolders.ps1
+  - ExtractICOfromEXE.ps1
+  - FileExclusionScanner.bat
+  - FlexLM.ps1
+  - FolderFullPermissions.ps1
+  - HomeFolderADCleanup.ps1
+  - InstalledAppCondition.ps1
+  - JavaExceptions/JavaExceptionSitesUser.ps1
+  - KeepAlive.ps1
+  - McAfeeFDEAcctMon.ps1
+  - ModifyShortcutPath.ps1
+  - MonitorRunningService.ps1
+  - NonBaselineImageSoftware.ps1
+  - OnPremImageTopoff.ps1
+  - PsExec-SCCMRemoteInstall.ps1
+  - PsExec-BatchRemoteInstall.ps1
+  - RDPlockup-DisableUDP.ps1
+  - RecentlyInstalledSoftware.ps1
+  - RegistryPOLfix.ps1
+  - ScrapeShortcutProperties.ps1
+  - ScheduledTask.ps1
+  - SmartCardTroubleshoot.ps1
+  - TXTfileperCSVentry.ps1
+  - MachAvailMon-PingAD.ps1
+  - PingBySpecificPort.ps1
+  - SQL-AuditHTMLreporttoEmail.ps1
+  - UserAvailMon-skype.ps1
+  - UserStandardizeShortcut.ps1
+  - x64x86pathfailover.ps1
+  - SearchALLExcel-resultTXT.ps1
 - [InfoSec](#infosec)
+  - Dump User AD Groups
+  - ChromeForceAutoupdate.ps1
+  - LastActivityCheck.ps1
+  - NessusCSVreportPrioritizer.ps1
+  - ServicesStopDisableReport.ps1
+  - UserLoginUptime.ps1
 - [Active Directory](#active-directory)
+  - ADLockedAccountMon.ps1
+  - Compare-UserFolder-ADHomepath.ps1
 - [Powershell](#powershell)
+  - IDPrimaryUserFromList.ps1
+  - PsExec with a batch list of machines
+  - PSEXEC with CAC, PIV, or yubikey SmartCard
+  - Download multiple JAR in pack200 format
+  - Pipe output to an external logfile
+  - Get Hostnames by IP address method
+  - Get the OS build number
+  - Workaround: .ssh folder may become inaccessible
 - [Batch](#batch)
+  - InstallTemplate.bat
+  - Silent EXE installer switch
+  - Alternate logfile method
+  - Silent MSI installer switch
+  - Powershell script start
 - [Crypto](#crypto)
+  - MiningAndGaming.ps1
+  - Burstcoin
+    - burstcoin-filename-textfile.ps1
+  - StorJ
+    - StorJV2NodeHealthAPIgrabber.ps1
+    - StorJ Node Health Monitor (Bash)
+    - StorJ Identity grabber
+  - Veriblock
+    - Veriblock PoolList
+    - Veriblock Pool API Scraper Grafana-APIScraper-InfluxDB.ps1
+    - Pinger-Veriblock-Pools.ps1
+    - Migrate-NodeCore.ps1
+    - Install-NodeCore.ps1
 - [Gaming](#gaming)
+  - Check if a game is responding
+  - Steam Server launcher with password
+  - NoMansSky / SaveGameSaver-NoPermaDeath.ps1
 
 #### CTRL+F Find Files
 
