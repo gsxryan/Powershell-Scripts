@@ -7,6 +7,21 @@ Automated systems can relay data instantly, integrate seamlessly, and operate 24
 > Effective execution,  
 > Process perfect flow.
 
+#### Scripts for the following Enterprise Roles:
+ - Systems Administrator
+ - SCCM / MECM Endpoint Managment Specialist
+ - Enterprise Desktop Automation Engineers
+ - Desktop Services Engineering
+ - IT Operations Engineer
+ - IT Specialist 
+
+#### What you'll find:
+- Strong problem solving & root cause analysis
+- Large scale automations (affecting entire enterprise)
+- Monitoring & observability scripts
+- Security/compliance Monitoring (DISA STIG, Nessus)
+- Production-grade scripts with error handling
+
 #### Table of Contents
 - [SCCM / MECM Misc Scripts](#sccm--mecm-misc-scripts)
   - ActivSetupReg-RunonceEachUser.ps1
