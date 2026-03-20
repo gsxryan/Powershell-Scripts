@@ -7,6 +7,16 @@ Automated systems can relay data instantly, integrate seamlessly, and operate 24
 > Effective execution,  
 > Process perfect flow.
 
+#### Table of Contents
+- [SCCM / MECM Misc Scripts](#sccm--mecm-misc-scripts)
+- [Windows Operations](#windows-operations)
+- [InfoSec](#infosec)
+- [Active Directory](#active-directory)
+- [Powershell](#powershell)
+- [Batch](#batch)
+- [Crypto](#crypto)
+- [Gaming](#gaming)
+
 #### CTRL+F Find Files
 
 ## SCCM / MECM Misc Scripts
