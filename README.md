@@ -1,13 +1,13 @@
-### “Effective communication is automating it away—it no longer requires thought, effort, or delay.” -| RCautomate.com
+### “Effective communication is automating it away.  It no longer requires thought, effort, or delay.” -| RCautomate.com
 Automated systems can relay data instantly, integrate seamlessly, and operate 24/7, minimizing the delays and inaccuracies common in human-driven communication.
 
 > Automate the words,  
-> Communication fades fast—  
+> Communication fades fast  
 > No thought, no delay.  
 > Effective execution,  
 > Process perfect flow.
 
-#### Scripts for the following Enterprise Roles:
+#### Intended for the following Enterprise Roles:
  - Systems Administrator
  - SCCM / MECM Endpoint Managment Specialist
  - Enterprise Desktop Automation Engineers
@@ -18,7 +18,7 @@ Automated systems can relay data instantly, integrate seamlessly, and operate 24
 #### What you'll find:
 - Strong problem solving & root cause analysis
 - Large scale automations (affecting entire enterprise)
-- Monitoring & observability scripts
+- Monitoring & observability scripts (Licensing, Security)
 - Security/compliance Monitoring (DISA STIG, Nessus)
 - Production-grade scripts with error handling
 
