@@ -1,12 +1,3 @@
-### “Effective communication is automating it away.  It no longer requires thought, effort, or delay.” -| RCautomate.com
-Automated systems can relay data instantly, integrate seamlessly, and operate 24/7, minimizing the delays and inaccuracies common in human-driven communication.
-
-> Automate the words,  
-> Communication fades fast  
-> No thought, no delay.  
-> Effective execution,  
-> Process perfect flow.
-
 #### Intended for the following Enterprise Roles:
  - Systems Administrator
  - SCCM / MECM Endpoint Managment Specialist
@@ -21,6 +12,16 @@ Automated systems can relay data instantly, integrate seamlessly, and operate 24
 - Monitoring & observability scripts (Licensing, Security)
 - Security/compliance Monitoring (DISA STIG, Nessus)
 - Production-grade scripts with error handling
+
+
+### “Effective communication is automating it away.  It no longer requires thought, effort, or delay.”
+Automated systems can relay data instantly, integrate seamlessly, and operate 24/7, minimizing the delays and inaccuracies common in human-driven communication.
+
+> Automate the needs,  
+> Communication fades fast  
+> No thought, no delay.  
+> Effective execution,  
+> Process perfect flow.
 
 #### Table of Contents
 - [SCCM / MECM Misc Scripts](#sccm--mecm-misc-scripts)
@@ -101,6 +102,8 @@ Automated systems can relay data instantly, integrate seamlessly, and operate 24
     - StorJ Node Health Monitor (Bash)
     - StorJ Identity grabber
   - Veriblock
+    - API Scraper to Grafana TIG stack preview:
+    [![Powershell API Scraper tool crawling VBK crypto mining pools to display visual graphs and monitor pool changes](VBK_TIG_grafana.png)](https://github.com/gsxryan/Powershell-Scripts/blob/master/Veriblock/Grafana-APIScraper-InfluxDB.ps1)
     - Veriblock PoolList
     - Veriblock Pool API Scraper Grafana-APIScraper-InfluxDB.ps1
     - Pinger-Veriblock-Pools.ps1
