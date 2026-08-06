@@ -98,6 +98,7 @@ Automated systems can relay data instantly, integrate seamlessly, and operate 24
   - Burstcoin
     - burstcoin-filename-textfile.ps1
   - StorJ
+  ![StorJ TIG Stack, Telegraf, InfluxDB, Grafana Health Monitoring dashboard](StorJ-TIGrafana.png)
     - StorJV2NodeHealthAPIgrabber.ps1
     - StorJ Node Health Monitor (Bash)
     - StorJ Identity grabber
