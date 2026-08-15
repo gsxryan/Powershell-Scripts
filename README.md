@@ -23,6 +23,10 @@ Automated systems can relay data instantly, integrate seamlessly, and operate 24
 > Effective execution,  
 > Process perfect flow.
 
+Cool Project:
+Folding at Home Mining Rig
+![Mining Rig](FoldingAtHome/mining1.jpg)
+
 #### Table of Contents
 - [SCCM / MECM Misc Scripts](#sccm--mecm-misc-scripts)
   - ActivSetupReg-RunonceEachUser.ps1
