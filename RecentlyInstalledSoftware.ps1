@@ -10,7 +10,9 @@ echo "SOFTWARE"
 $Table
 
 echo "UPDATES"
-wmic qfe list
+Get-HotFix
+# or
+#Get-HotFix | Select-Object HotFixID, Description, InstalledOn
 $TableUpdates
 
 pause 
